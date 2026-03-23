@@ -122,19 +122,11 @@
       </p>
     </div>
 
-    <!-- COUNTRY SECTIONS -->
-    <!-- IMPORTANT: the section id must match the SVG id exactly -->
-
     <section class="country-section" id="KE">
       <h2>Kenya</h2>
       <div class="doctor-card">
         <strong>Dr. Example Name</strong><br>
         Nephrologist<br>
-        Example Hospital / Institution
-      </div>
-      <div class="doctor-card">
-        <strong>Dr. Example Name</strong><br>
-        Transplant Surgeon<br>
         Example Hospital / Institution
       </div>
       <a class="back-top" href="#top">Back to map</a>
