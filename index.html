@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>African Nephrology Transplant Symposium</title>
+  <title>NEPHRICA</title>
   <style>
     :root {
       --deep-purple: #4b2e83;
       --mid-purple: #6d4db3;
       --light-purple: #efe8fb;
-      --soft-purple: #f7f3fc;
+      --soft-purple: #f8f5fc;
       --text-dark: #2b2238;
       --white: #ffffff;
-      --border: #e4daf5;
-      --shadow: 0 6px 18px rgba(75, 46, 131, 0.10);
+      --border: #e7dcf5;
+      --shadow: 0 8px 22px rgba(75, 46, 131, 0.10);
     }
 
     * {
@@ -50,34 +50,41 @@
     }
 
     .hero {
-      background: linear-gradient(135deg, var(--deep-purple), var(--mid-purple));
-      color: white;
-      text-align: center;
-      padding: 70px 20px 60px 20px;
+      background: linear-gradient(180deg, #ffffff 0%, #faf7fe 100%);
+      padding: 48px 20px 28px 20px;
     }
 
-    .hero h1 {
-      margin: 0 0 14px 0;
-      font-size: 2.4rem;
-      letter-spacing: 0.3px;
-    }
-
-    .hero p {
+    .hero-inner {
+      max-width: 1150px;
       margin: 0 auto;
-      max-width: 760px;
+      text-align: center;
+    }
+
+    .hero-image {
+      width: 100%;
+      max-width: 1220px;
+      height: auto;
+      display: block;
+      margin: 0 auto 18px auto;
+    }
+
+    .hero-tagline {
       font-size: 1.05rem;
-      line-height: 1.6;
+      color: var(--deep-purple);
+      font-weight: 700;
+      margin: 0 auto;
+      max-width: 900px;
     }
 
     .main-wrap {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 40px 20px 60px 20px;
+      padding: 30px 20px 60px 20px;
     }
 
     .intro-card,
-    .map-container,
-    #infoBox {
+    .feature-card,
+    .cta-card {
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 18px;
@@ -85,74 +92,110 @@
     }
 
     .intro-card {
-      padding: 28px;
-      margin-bottom: 26px;
-    }
-
-    .intro-card h2 {
-      margin-top: 0;
-      color: var(--deep-purple);
-    }
-
-    .map-container {
-      padding: 22px;
-    }
-
-    .map-heading {
+      padding: 30px;
+      margin-bottom: 28px;
       text-align: center;
-      margin-bottom: 14px;
     }
 
-    .map-heading h2 {
-      margin: 0 0 8px 0;
-      color: var(--deep-purple);
-    }
-
-    .map-heading p {
-      margin: 0;
-      color: #5a4c72;
-    }
-
-    #africaMap {
-      width: 100%;
-      height: 650px;
-      display: block;
-      border: none;
-      background: var(--white);
-      border-radius: 12px;
-    }
-
-    #infoBox {
-      margin-top: 28px;
-      padding: 28px;
-      display: none;
-    }
-
-    #countryTitle {
+    .intro-card h1 {
       margin-top: 0;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       color: var(--deep-purple);
-      font-size: 1.6rem;
+      font-size: 2rem;
     }
 
-    #countryContent p {
-      margin: 10px 0;
+    .intro-card p {
+      margin: 0 auto;
+      max-width: 850px;
+      line-height: 1.7;
+      color: #56496c;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 22px;
+      margin-bottom: 28px;
+    }
+
+    .feature-card {
+      padding: 24px;
+    }
+
+    .feature-card h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--deep-purple);
+      font-size: 1.2rem;
+    }
+
+    .feature-card p {
+      margin: 0 0 16px 0;
       line-height: 1.6;
+      color: #5f5276;
     }
 
-    .close-btn {
-      background: var(--deep-purple);
-      color: white;
-      border: none;
-      padding: 11px 18px;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-top: 16px;
+    .feature-link {
+      display: inline-block;
+      text-decoration: none;
+      color: var(--mid-purple);
       font-weight: 700;
     }
 
-    .close-btn:hover {
+    .feature-link:hover {
+      color: var(--deep-purple);
+    }
+
+    .cta-card {
+      padding: 30px;
+      text-align: center;
+      background: linear-gradient(180deg, #ffffff 0%, var(--soft-purple) 100%);
+    }
+
+    .cta-card h2 {
+      margin-top: 0;
+      color: var(--deep-purple);
+    }
+
+    .cta-card p {
+      margin: 0 auto 20px auto;
+      max-width: 760px;
+      line-height: 1.7;
+      color: #5a4c72;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-block;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .btn-primary {
+      background: var(--deep-purple);
+      color: white;
+    }
+
+    .btn-primary:hover {
       background: var(--mid-purple);
+    }
+
+    .btn-secondary {
+      background: var(--light-purple);
+      color: var(--deep-purple);
+    }
+
+    .btn-secondary:hover {
+      background: #e5daf8;
     }
 
     footer {
@@ -165,17 +208,21 @@
     }
 
     @media (max-width: 700px) {
-      .hero h1 {
-        font-size: 1.9rem;
-      }
-
       nav a {
         display: inline-block;
         margin: 8px 10px;
       }
 
-      #africaMap {
-        height: 450px;
+      .hero {
+        padding-top: 28px;
+      }
+
+      .intro-card h1 {
+        font-size: 1.6rem;
+      }
+
+      .hero-tagline {
+        font-size: 0.98rem;
       }
     }
   </style>
@@ -191,115 +238,66 @@
   </nav>
 
   <section class="hero">
-    <h1>African Nephrology Transplant Symposium</h1>
-    <p>
-      Advancing collaboration, research, and clinical partnership across Africa in nephrology and transplantation.
-    </p>
+    <div class="hero-inner">
+      <img src="nephrica-home.png" alt="NEPHRICA logo and title" class="hero-image">
+      <p class="hero-tagline">
+        Advancing nephrology education, care, and collaboration across Africa
+      </p>
+    </div>
   </section>
 
   <div class="main-wrap">
 
     <div class="intro-card">
-      <h2>Welcome</h2>
+      <h1>Welcome to NEPHRICA</h1>
       <p>
-        Explore the map below to view participating physicians and symposium collaborators by country.
-        Country information will appear only after a country is selected.
+        The Nephrology Research and Innovation Consortium for Africa is dedicated to building collaboration,
+        expanding research partnerships, and supporting innovation in kidney care and transplantation across the continent.
       </p>
     </div>
 
-    <div class="map-container">
-      <div class="map-heading">
-        <h2>Interactive Africa Map</h2>
-        <p>Click Kenya, Ethiopia, or Congo to view country-specific information.</p>
+    <div class="features">
+      <div class="feature-card">
+        <h2>About the Consortium</h2>
+        <p>
+          Learn more about the mission, vision, and goals of NEPHRICA and the broader collaborative work driving this initiative.
+        </p>
+        <a class="feature-link" href="about.html">Learn more →</a>
       </div>
 
-      <object type="image/svg+xml" data="africa.svg" id="africaMap"></object>
+      <div class="feature-card">
+        <h2>Members</h2>
+        <p>
+          Meet the core team and explore African collaborators by country through the interactive members map.
+        </p>
+        <a class="feature-link" href="members.html">View members →</a>
+      </div>
+
+      <div class="feature-card">
+        <h2>Projects</h2>
+        <p>
+          Explore active initiatives, consortium priorities, and research efforts related to nephrology and transplantation.
+        </p>
+        <a class="feature-link" href="projects.html">View projects →</a>
+      </div>
     </div>
 
-    <div id="infoBox">
-      <h2 id="countryTitle"></h2>
-      <div id="countryContent"></div>
-      <button class="close-btn" onclick="closeInfo()">Close</button>
+    <div class="cta-card">
+      <h2>Explore the Network</h2>
+      <p>
+        Discover the clinicians, researchers, and project contributors helping advance kidney health collaboration across Africa.
+      </p>
+      <div class="cta-buttons">
+        <a class="btn-primary" href="members.html">Go to Members</a>
+        <a class="btn-secondary" href="contact.html">Contact Us</a>
+      </div>
     </div>
 
   </div>
 
   <footer>
-    African Nephrology Transplant Symposium
+    NEPHRICA | Nephrology Research and Innovation Consortium for Africa
   </footer>
-
-  <script>
-    const countryData = {
-      KE: `
-        <p><strong>Kenya</strong></p>
-        <p>Dr. Example Name – Nephrologist</p>
-        <p>Example Hospital / Institution</p>
-      `,
-      ET: `
-        <p><strong>Ethiopia</strong></p>
-        <p>Dr. Example Name – Nephrologist</p>
-        <p>Example Hospital / Institution</p>
-      `,
-      CD: `
-        <p><strong>Democratic Republic of the Congo</strong></p>
-        <p>Dr. Example Name – Nephrologist</p>
-        <p>Example Hospital / Institution</p>
-      `,
-      CG: `
-        <p><strong>Republic of the Congo</strong></p>
-        <p>Dr. Example Name – Nephrologist</p>
-        <p>Example Hospital / Institution</p>
-      `
-    };
-
-    const countryNames = {
-      KE: "Kenya",
-      ET: "Ethiopia",
-      CD: "Democratic Republic of the Congo",
-      CG: "Republic of the Congo"
-    };
-
-    function showInfo(countryCode) {
-      const infoBox = document.getElementById("infoBox");
-      const title = document.getElementById("countryTitle");
-      const content = document.getElementById("countryContent");
-
-      title.textContent = countryNames[countryCode];
-      content.innerHTML = countryData[countryCode];
-      infoBox.style.display = "block";
-      infoBox.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-
-    function closeInfo() {
-      document.getElementById("infoBox").style.display = "none";
-    }
-
-    document.getElementById("africaMap").addEventListener("load", function () {
-      const svg = this.contentDocument;
-      const countries = ["KE", "ET", "CD", "CG"];
-
-      countries.forEach(id => {
-        const country = svg.getElementById(id);
-
-        if (country) {
-          country.style.cursor = "pointer";
-          country.style.transition = "fill 0.2s ease";
-
-          country.addEventListener("click", function () {
-            showInfo(id);
-          });
-
-          country.addEventListener("mouseover", function () {
-            country.style.fill = "#b79ced";
-          });
-
-          country.addEventListener("mouseout", function () {
-            country.style.fill = "#f2f2f2";
-          });
-        }
-      });
-    });
-  </script>
 
 </body>
 </html>
