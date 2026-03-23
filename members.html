@@ -1,121 +1,424 @@
-<script>
-  const membersData = {
-    ET: {
-      name: "Ethiopia",
-      members: [
-        {
-          name: "Yewondwossen Tadesse Mengistu, MD",
-          role: "Consultant Nephrologist and Associate Professor of Internal Medicine at Addis Ababa University. With over 25 years of experience, he has led nephrology training, established Ethiopia’s first maintenance hemodialysis unit (2001), and contributed over 40 publications. He has held leadership roles in the Ethiopian Medical Association, Ministry of Health, ISN, AFRAN, and the Declaration of Istanbul Custodian Group."
-        }
-      ]
-    },
-    KE: {
-      name: "Kenya",
-      members: [
-        {
-          name: "Dr. Khalida B. Soki MD FISN",
-          role: "Nephrica Consortium member from Kenya."
-        }
-      ]
-    },
-    CD: {  // Democratic Republic of Congo
-      name: "Congo",
-      members: [
-        {
-          name: "Dr. Nlandu Mayamba N. Yannick",
-          role: "Nephrica Consortium member from Congo."
-        }
-      ]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Members | Nephrica Consortium</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-  };
 
-  function renderMembers(code) {
-    const memberContent = document.getElementById("memberContent");
-    const country = membersData[code];
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f1f7;
+      color: #4b2e83;
+    }
 
-    if (!country) return;
+    header {
+      background-color: #f4f1f7;
+      border-bottom: 1px solid #dfd3ee;
+      padding: 24px 0;
+    }
 
-    let html = `<div class="selected-country">${country.name}</div>`;
-    html += `<ul class="member-list">`;
+    nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 56px;
+      flex-wrap: wrap;
+    }
 
-    country.members.forEach(member => {
-      html += `
-        <li>
-          <span class="member-name">${member.name}</span>
-          <span class="member-role">${member.role}</span>
-        </li>
-      `;
-    });
+    nav a {
+      text-decoration: none;
+      color: #4b2e83;
+      font-size: 1.1rem;
+      font-weight: 700;
+      transition: color 0.25s ease;
+    }
 
-    html += `</ul>`;
-    memberContent.innerHTML = html;
-  }
+    nav a:hover {
+      color: #6a42b8;
+    }
 
-  document.getElementById("africaMap").addEventListener("load", function () {
-    const svgDoc = this.contentDocument;
-    if (!svgDoc) return;
+    .hero {
+      max-width: 1300px;
+      margin: 32px auto 0;
+      background: #f7f4f8;
+      padding: 36px 30px 28px;
+      text-align: center;
+    }
 
-    const clickable = ["ET", "KE", "CD"]; // Ethiopia, Kenya, Congo (DRC)
+    .hero h1 {
+      font-size: 3.1rem;
+      color: #4b2e83;
+      margin-bottom: 18px;
+      font-weight: 800;
+    }
 
-    // Dim ALL countries first
-    const allCodes = [
-      "DZ","EG","LY","MA","TN","NG","GH","SN","ML","CI","BF","NE",
-      "CM","TD","CF","GA","GQ","UG","TZ","RW","BI","SO","ER","DJ",
-      "ZA","BW","ZW","ZM","NA","MZ","MW","LS","SZ","MG","CD","KE","ET"
-    ];
+    .hero p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #5a458d;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
 
-    allCodes.forEach(code => {
-      const el = svgDoc.getElementById(code);
-      if (el) {
-        el.style.fill = "#d9d1e8";
+    .main-section {
+      max-width: 1300px;
+      margin: 36px auto 60px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 34px;
+      padding: 0 20px;
+      align-items: start;
+    }
+
+    .card {
+      background: white;
+      padding: 34px 30px;
+      box-shadow: 0 2px 10px rgba(75, 46, 131, 0.08);
+    }
+
+    .card h2 {
+      font-size: 2.2rem;
+      color: #4b2e83;
+      text-align: center;
+      margin-bottom: 16px;
+      font-weight: 800;
+    }
+
+    .subtext {
+      text-align: center;
+      color: #6a5b8f;
+      font-size: 1.05rem;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .map-wrapper {
+      background: #faf8fc;
+      padding: 12px;
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #africaMap {
+      width: 100%;
+      height: 700px;
+      border: none;
+    }
+
+    .selected-country {
+      font-size: 1.7rem;
+      color: #4b2e83;
+      margin-bottom: 18px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .default-text {
+      color: #5f4d8a;
+      line-height: 1.8;
+      font-size: 1.05rem;
+      text-align: center;
+    }
+
+    .member-list {
+      list-style: none;
+      margin-top: 8px;
+    }
+
+    .member-list li {
+      background: #f7f3fb;
+      border-left: 5px solid #6a42b8;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .member-name {
+      display: block;
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #4b2e83;
+      margin-bottom: 8px;
+    }
+
+    .member-role {
+      color: #5f4d8a;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      display: block;
+    }
+
+    .bottom-text {
+      max-width: 1400px;
+      margin: 10px auto 50px;
+      padding: 0 40px;
+      text-align: center;
+    }
+
+    .bottom-text h2 {
+      font-size: 3.15rem;
+      line-height: 1.18;
+      color: #4b2e83;
+      font-weight: 800;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 20px 34px;
+      color: #6d5a98;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 1000px) {
+      .main-section {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+
+      .bottom-text h2 {
+        font-size: 2.2rem;
+      }
+
+      #africaMap {
+        height: 600px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        gap: 24px;
+      }
+
+      nav a {
+        font-size: 1rem;
+      }
+
+      .hero {
+        padding: 28px 18px 22px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .card {
+        padding: 24px 18px;
+      }
+
+      .card h2 {
+        font-size: 1.7rem;
+      }
+
+      .bottom-text {
+        padding: 0 20px;
+      }
+
+      .bottom-text h2 {
+        font-size: 1.8rem;
+      }
+
+      #africaMap {
+        height: 500px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="./index.html">Home</a>
+      <a href="./about.html">About</a>
+      <a href="./members.html">Members</a>
+      <a href="./projects.html">Projects</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Nephrica Consortium Members Across Africa</h1>
+    <p>
+      Explore participating countries across Africa. Currently, Kenya, Ethiopia,
+      and Congo are interactive on the map. Click one of those countries to view
+      the members involved in the consortium.
+    </p>
+  </section>
+
+  <section class="main-section">
+    <div class="card">
+      <h2>Africa Member Map</h2>
+      <p class="subtext">Only Congo, Kenya, and Ethiopia are clickable at this time.</p>
+
+      <div class="map-wrapper">
+        <object id="africaMap" data="./africa.svg" type="image/svg+xml">
+          Your browser does not support SVG files.
+        </object>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Country Members</h2>
+      <div id="memberContent">
+        <div class="selected-country">Select a country</div>
+        <p class="default-text">
+          Click Ethiopia, Kenya, or Congo on the map to display the members involved from that location.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bottom-text">
+    <h2>
+      The Nephrology Research and Innovation Consortium for Africa
+      is dedicated to expanding collaboration, advancing research, and
+      improving kidney care and transplantation across Africa.
+    </h2>
+  </section>
+
+  <footer>
+    &copy; 2026 Nephrica Consortium. All rights reserved.
+  </footer>
+
+  <script>
+    const membersData = {
+      ET: {
+        name: "Ethiopia",
+        members: [
+          {
+            name: "Yewondwossen Tadesse Mengistu, MD",
+            role: "Yewondwossen Tadesse Mengistu, MD is a Consultant Nephrologist and Associate Professor of Internal Medicine at the School of Medicine, College of Health Sciences, Addis Ababa University. With over 25 years of experience in nephrology, his work focuses on clinical care, medical education, and physician training. He has mentored numerous nephrologists who now hold leadership roles across Ethiopia and Africa and has led fellowship training in nephrology, with multiple graduates and trainees. He played a pivotal role in establishing Ethiopia’s first maintenance hemodialysis unit in 2001, catalyzing the expansion of dialysis services nationwide. Dr. Mengistu has authored over 40 peer-reviewed publications, coauthored a book chapter, and presented widely at national and international forums. He has served as Head of Internal Medicine, led the renal unit for over two decades, and held leadership roles in the Ethiopian Medical Association, the Ministry of Health, ISN, AFRAN, and currently the Declaration of Istanbul Custodian Group."
+          }
+        ]
+      },
+      KE: {
+        name: "Kenya",
+        members: [
+          {
+            name: "Dr. Khalida B. Soki MD FISN",
+            role: "Nephrica Consortium member from Kenya."
+          }
+        ]
+      },
+      CD: {
+        name: "Congo",
+        members: [
+          {
+            name: "Dr. Nlandu Mayamba N. Yannick",
+            role: "Nephrica Consortium member from Congo."
+          }
+        ]
+      }
+    };
+
+    function renderMembers(code) {
+      const memberContent = document.getElementById("memberContent");
+      const country = membersData[code];
+
+      if (!country) return;
+
+      let html = `<div class="selected-country">${country.name}</div>`;
+
+      if (country.members.length > 0) {
+        html += `<ul class="member-list">`;
+
+        country.members.forEach(member => {
+          html += `
+            <li>
+              <span class="member-name">${member.name}</span>
+              <span class="member-role">${member.role}</span>
+            </li>
+          `;
+        });
+
+        html += `</ul>`;
+      } else {
+        html += `<p class="default-text">No members have been added for this country yet.</p>`;
+      }
+
+      memberContent.innerHTML = html;
+    }
+
+    document.getElementById("africaMap").addEventListener("load", function () {
+      const svgDoc = this.contentDocument;
+      if (!svgDoc) return;
+
+      const allCodes = [
+        "DZ", "EG", "LY", "MA", "TN",
+        "NG", "GH", "SN", "ML", "CI", "BF", "NE",
+        "CM", "TD", "CF", "GA", "GQ", "CD",
+        "UG", "TZ", "RW", "BI", "SO", "ER", "DJ", "KE", "ET",
+        "ZA", "BW", "ZW", "ZM", "NA", "MZ", "MW", "LS", "SZ",
+        "MG"
+      ];
+
+      const clickableCodes = ["ET", "KE", "CD"];
+
+      allCodes.forEach(code => {
+        const el = svgDoc.getElementById(code);
+        if (el) {
+          el.style.fill = "#d9d1e8";
+          el.style.stroke = "#ffffff";
+          el.style.strokeWidth = "1";
+          el.style.cursor = "default";
+          el.style.transition = "fill 0.2s ease";
+        }
+      });
+
+      clickableCodes.forEach(code => {
+        const el = svgDoc.getElementById(code);
+
+        if (!el) {
+          console.log("Missing SVG ID:", code);
+          return;
+        }
+
+        el.style.fill = "#6a42b8";
         el.style.stroke = "#ffffff";
-        el.style.strokeWidth = "1";
-        el.style.cursor = "default";
-      }
-    });
+        el.style.strokeWidth = "1.5";
+        el.style.cursor = "pointer";
 
-    // Activate only selected countries
-    clickable.forEach(code => {
-      const el = svgDoc.getElementById(code);
-
-      if (!el) {
-        console.log("Missing:", code);
-        return;
-      }
-
-      el.style.fill = "#6a42b8";
-      el.style.stroke = "#ffffff";
-      el.style.strokeWidth = "1.5";
-      el.style.cursor = "pointer";
-
-      el.addEventListener("mouseenter", () => {
-        if (!el.dataset.active) {
-          el.style.fill = "#8a63d2";
-        }
-      });
-
-      el.addEventListener("mouseleave", () => {
-        if (!el.dataset.active) {
-          el.style.fill = "#6a42b8";
-        }
-      });
-
-      el.addEventListener("click", () => {
-        // Reset all
-        clickable.forEach(c => {
-          const other = svgDoc.getElementById(c);
-          if (other) {
-            other.dataset.active = "";
-            other.style.fill = "#6a42b8";
+        el.addEventListener("mouseenter", () => {
+          if (!el.dataset.active) {
+            el.style.fill = "#8a63d2";
           }
         });
 
-        // Highlight selected
-        el.dataset.active = "true";
-        el.style.fill = "#d24ca3";
+        el.addEventListener("mouseleave", () => {
+          if (!el.dataset.active) {
+            el.style.fill = "#6a42b8";
+          }
+        });
 
-        renderMembers(code);
+        el.addEventListener("click", () => {
+          clickableCodes.forEach(otherCode => {
+            const otherEl = svgDoc.getElementById(otherCode);
+            if (otherEl) {
+              otherEl.dataset.active = "";
+              otherEl.style.fill = "#6a42b8";
+            }
+          });
+
+          el.dataset.active = "true";
+          el.style.fill = "#d24ca3";
+
+          renderMembers(code);
+        });
       });
     });
-  });
-</script>
+  </script>
+
+</body>
+</html>
