@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Members | African Nephrology Transplant Symposium</title>
+  <title>Members | NEPHRICA</title>
   <style>
     :root {
       --deep-purple: #4b2e83;
       --mid-purple: #6d4db3;
       --light-purple: #efe8fb;
-      --soft-purple: #f7f3fc;
+      --soft-purple: #f8f5fc;
+      --card-purple: #fbf9fe;
       --text-dark: #2b2238;
+      --muted-text: #5e5470;
       --white: #ffffff;
       --border: #e4daf5;
-      --shadow: 0 6px 18px rgba(75, 46, 131, 0.10);
+      --shadow: 0 8px 22px rgba(75, 46, 131, 0.08);
     }
 
     * {
@@ -40,6 +42,7 @@
       margin: 0 18px;
       font-weight: 700;
       font-size: 0.95rem;
+      transition: color 0.2s ease;
     }
 
     nav a:hover {
@@ -50,25 +53,26 @@
       background: linear-gradient(135deg, var(--deep-purple), var(--mid-purple));
       color: white;
       text-align: center;
-      padding: 60px 20px 50px 20px;
+      padding: 56px 20px 48px 20px;
     }
 
     .hero h1 {
       margin: 0 0 12px 0;
-      font-size: 2.3rem;
+      font-size: 2.2rem;
+      letter-spacing: 0.2px;
     }
 
     .hero p {
       margin: 0 auto;
-      max-width: 850px;
-      font-size: 1.05rem;
-      line-height: 1.6;
+      max-width: 860px;
+      font-size: 1.02rem;
+      line-height: 1.65;
     }
 
     .main-wrap {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 36px 20px 60px 20px;
+      padding: 34px 20px 60px 20px;
     }
 
     .section-card,
@@ -81,50 +85,57 @@
     }
 
     .section-card {
-      padding: 28px;
-      margin-bottom: 28px;
+      padding: 30px;
+      margin-bottom: 26px;
     }
 
-    .section-card h2,
-    .map-heading h2,
-    #countryTitle {
-      margin-top: 0;
+    .section-title {
+      margin: 0 0 10px 0;
       color: var(--deep-purple);
+      font-size: 1.7rem;
     }
 
     .section-intro {
-      color: #5d4d73;
-      margin-bottom: 24px;
-      line-height: 1.6;
+      margin: 0 0 24px 0;
+      color: var(--muted-text);
+      line-height: 1.65;
+      max-width: 900px;
     }
 
     .member-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 18px;
     }
 
     .member-card {
-      background: var(--soft-purple);
+      background: var(--card-purple);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 18px;
+      border-radius: 16px;
+      padding: 20px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .member-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(75, 46, 131, 0.08);
     }
 
     .member-card h3 {
-      margin: 0 0 8px 0;
+      margin: 0 0 10px 0;
       color: var(--deep-purple);
-      font-size: 1.1rem;
+      font-size: 1.08rem;
     }
 
     .member-card p {
-      margin: 6px 0;
+      margin: 7px 0;
       line-height: 1.5;
+      color: var(--text-dark);
     }
 
     .map-container {
-      padding: 22px;
-      margin-bottom: 28px;
+      padding: 24px;
+      margin-bottom: 24px;
     }
 
     .map-heading {
@@ -132,15 +143,22 @@
       margin-bottom: 14px;
     }
 
+    .map-heading h2 {
+      margin: 0 0 8px 0;
+      color: var(--deep-purple);
+      font-size: 1.7rem;
+    }
+
     .map-heading p {
-      margin: 0;
-      color: #5a4c72;
+      margin: 0 auto;
+      max-width: 760px;
+      color: var(--muted-text);
       line-height: 1.6;
     }
 
     #africaMap {
       width: 100%;
-      height: 650px;
+      height: 560px;
       display: block;
       border: none;
       background: var(--white);
@@ -152,9 +170,16 @@
       display: none;
     }
 
+    #countryTitle {
+      margin: 0 0 14px 0;
+      color: var(--deep-purple);
+      font-size: 1.5rem;
+    }
+
     #countryContent p {
       margin: 10px 0;
       line-height: 1.6;
+      color: var(--text-dark);
     }
 
     .close-btn {
@@ -166,6 +191,7 @@
       cursor: pointer;
       margin-top: 16px;
       font-weight: 700;
+      transition: background 0.2s ease;
     }
 
     .close-btn:hover {
@@ -174,7 +200,7 @@
 
     footer {
       margin-top: 40px;
-      padding: 28px 20px;
+      padding: 26px 20px;
       text-align: center;
       color: #6a5d82;
       border-top: 1px solid var(--border);
@@ -182,17 +208,28 @@
     }
 
     @media (max-width: 700px) {
-      .hero h1 {
-        font-size: 1.9rem;
-      }
-
       nav a {
         display: inline-block;
         margin: 8px 10px;
       }
 
+      .hero h1 {
+        font-size: 1.85rem;
+      }
+
+      .hero p {
+        font-size: 0.98rem;
+      }
+
+      .section-card,
+      .map-container,
+      #infoBox {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
       #africaMap {
-        height: 450px;
+        height: 430px;
       }
     }
   </style>
@@ -210,17 +247,17 @@
   <section class="hero">
     <h1>Members</h1>
     <p>
-      Our consortium includes an international team of clinicians, researchers, and project contributors.
-      Core team members in the United States support coordination, research, and outreach, while African collaborators are represented below by country.
+      Our consortium includes an international network of clinicians, researchers, and project contributors.
+      Core team members in the United States support coordination, outreach, and research development, while African collaborators are represented below by country.
     </p>
   </section>
 
   <div class="main-wrap">
 
     <div class="section-card">
-      <h2>Core Team</h2>
+      <h2 class="section-title">Core Team</h2>
       <p class="section-intro">
-        This section highlights project leadership, coordination, and U.S.-based contributors supporting the symposium and broader consortium work.
+        This section highlights project leadership, coordination, and U.S.-based contributors supporting NEPHRICA’s symposium, outreach, and research goals.
       </p>
 
       <div class="member-grid">
@@ -251,7 +288,7 @@
       <div class="map-heading">
         <h2>African Collaborators</h2>
         <p>
-          Click a country on the map to view participating physicians and collaborators in that location.
+          Select a country on the map to view participating physicians, collaborators, and institutions in that location.
         </p>
       </div>
 
@@ -267,7 +304,7 @@
   </div>
 
   <footer>
-    African Nephrology Transplant Symposium
+    NEPHRICA | Nephrology Research and Innovation Consortium for Africa
   </footer>
 
   <script>
