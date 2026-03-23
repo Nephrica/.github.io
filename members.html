@@ -70,14 +70,14 @@
       max-width: 1300px;
       margin: 36px auto 60px;
       display: grid;
-      grid-template-columns: 1.35fr 1fr;
+      grid-template-columns: 1.2fr 1fr;
       gap: 34px;
       padding: 0 20px;
+      align-items: start;
     }
 
     .card {
       background: white;
-      border-radius: 0;
       padding: 34px 30px;
       box-shadow: 0 2px 10px rgba(75, 46, 131, 0.08);
     }
@@ -101,41 +101,16 @@
     .map-wrapper {
       background: #faf8fc;
       padding: 12px;
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    svg {
+    #africaMap {
       width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .africa-outline {
-      fill: #eee7f7;
-      stroke: #cab9e3;
-      stroke-width: 3;
-    }
-
-    .country {
-      fill: #6a42b8;
-      stroke: white;
-      stroke-width: 1.5;
-      cursor: pointer;
-      transition: fill 0.25s ease, transform 0.2s ease;
-    }
-
-    .country:hover {
-      fill: #8a63d2;
-    }
-
-    .country.active {
-      fill: #d24ca3;
-    }
-
-    .country-label {
-      fill: #4b2e83;
-      font-size: 12px;
-      font-weight: 700;
-      pointer-events: none;
+      height: 700px;
+      border: none;
     }
 
     .selected-country {
@@ -161,7 +136,7 @@
     .member-list li {
       background: #f7f3fb;
       border-left: 5px solid #6a42b8;
-      padding: 16px 16px;
+      padding: 16px;
       margin-bottom: 14px;
     }
 
@@ -170,12 +145,14 @@
       font-size: 1.08rem;
       font-weight: 700;
       color: #4b2e83;
-      margin-bottom: 4px;
+      margin-bottom: 8px;
     }
 
     .member-role {
-      color: #6a5b8f;
+      color: #5f4d8a;
       font-size: 0.98rem;
+      line-height: 1.7;
+      display: block;
     }
 
     .bottom-text {
@@ -210,6 +187,10 @@
 
       .bottom-text h2 {
         font-size: 2.2rem;
+      }
+
+      #africaMap {
+        height: 600px;
       }
     }
 
@@ -249,6 +230,10 @@
       .bottom-text h2 {
         font-size: 1.8rem;
       }
+
+      #africaMap {
+        height: 500px;
+      }
     }
   </style>
 </head>
@@ -267,55 +252,21 @@
   <section class="hero">
     <h1>Nephrica Consortium Members Across Africa</h1>
     <p>
-      Explore participating countries across Africa and click on a highlighted country
-      to view the clinicians and researchers involved in the Nephrica Consortium.
+      Explore participating countries across Africa. Currently, Kenya, Ethiopia,
+      and Congo are interactive on the map. Click one of those countries to view
+      the members involved in the consortium.
     </p>
   </section>
 
   <section class="main-section">
     <div class="card">
       <h2>Africa Member Map</h2>
-      <p class="subtext">Select a country below to view the members involved.</p>
+      <p class="subtext">Only Congo, Kenya, and Ethiopia are clickable at this time.</p>
 
       <div class="map-wrapper">
-        <svg viewBox="0 0 800 900" xmlns="http://www.w3.org/2000/svg" aria-label="Interactive Africa Map">
-          <path
-            class="africa-outline"
-            d="M318 78
-               L390 60 L452 84 L520 130 L572 178
-               L602 250 L620 320 L610 382
-               L580 430 L560 505 L520 585
-               L470 650 L430 725 L395 815
-               L350 785 L330 720 L280 680
-               L245 615 L205 540 L175 470
-               L160 395 L170 315 L205 245
-               L250 180 L285 125 Z"
-          />
-
-          <polygon id="Morocco" class="country" points="250,120 300,105 330,120 320,155 270,160 240,145"></polygon>
-          <text x="245" y="100" class="country-label">Morocco</text>
-
-          <polygon id="Algeria" class="country" points="320,105 385,92 455,120 430,180 345,182 320,155"></polygon>
-          <text x="350" y="83" class="country-label">Algeria</text>
-
-          <polygon id="Egypt" class="country" points="470,120 542,118 565,160 515,192 455,170"></polygon>
-          <text x="500" y="102" class="country-label">Egypt</text>
-
-          <polygon id="Ghana" class="country" points="275,355 302,350 305,405 280,412 265,386"></polygon>
-          <text x="240" y="345" class="country-label">Ghana</text>
-
-          <polygon id="Nigeria" class="country" points="315,345 360,338 385,370 372,418 325,425 300,390"></polygon>
-          <text x="305" y="332" class="country-label">Nigeria</text>
-
-          <polygon id="Ethiopia" class="country" points="500,300 565,292 590,340 560,388 500,380 478,340"></polygon>
-          <text x="495" y="282" class="country-label">Ethiopia</text>
-
-          <polygon id="Kenya" class="country" points="470,405 515,398 530,438 508,492 460,480 452,438"></polygon>
-          <text x="468" y="390" class="country-label">Kenya</text>
-
-          <polygon id="South Africa" class="country" points="350,700 420,682 470,720 448,775 382,790 330,750"></polygon>
-          <text x="330" y="670" class="country-label">South Africa</text>
-        </svg>
+        <object id="africaMap" data="./africa.svg" type="image/svg+xml">
+          Your browser does not support SVG files.
+        </object>
       </div>
     </div>
 
@@ -324,7 +275,7 @@
       <div id="memberContent">
         <div class="selected-country">Select a country</div>
         <p class="default-text">
-          Click on a country in the Africa map to display the members involved from that location.
+          Click Ethiopia, Kenya, or Congo on the map to display the members involved from that location.
         </p>
       </div>
     </div>
@@ -344,67 +295,165 @@
 
   <script>
     const membersData = {
-      "Morocco": [
-        { name: "Dr. Amina El Idrissi", role: "Nephrologist" },
-        { name: "Dr. Youssef Bennani", role: "Clinical Research Lead" }
-      ],
-      "Algeria": [
-        { name: "Dr. Samir Khelifa", role: "Internal Medicine / Nephrology" }
-      ],
-      "Egypt": [
-        { name: "Dr. Omar Hassan", role: "Renal Pathway Coordinator" },
-        { name: "Dr. Salma Fawzy", role: "Clinical Investigator" }
-      ],
-      "Ghana": [
-        { name: "Dr. Kwame Mensah", role: "Nephrology Consultant" }
-      ],
-      "Nigeria": [
-        { name: "Dr. Chinedu Okafor", role: "Nephrologist" },
-        { name: "Dr. Adaeze Eze", role: "Glomerular Disease Researcher" },
-        { name: "Dr. Ibrahim Bello", role: "Consultant Physician" }
-      ],
       "Ethiopia": [
-        { name: "Dr. Hana Tesfaye", role: "Nephrologist" }
+        {
+          name: "Yewondwossen Tadesse Mengistu, MD",
+          role: "Yewondwossen Tadesse Mengistu, MD is a Consultant Nephrologist and Associate Professor of Internal Medicine at the School of Medicine, College of Health Sciences, Addis Ababa University. With over 25 years of experience in nephrology, his work focuses on clinical care, medical education, and physician training. He has mentored numerous nephrologists who now hold leadership roles across Ethiopia and Africa and has led fellowship training in nephrology, with multiple graduates and trainees. He played a pivotal role in establishing Ethiopia’s first maintenance hemodialysis unit in 2001, catalyzing the expansion of dialysis services nationwide. Dr. Mengistu has authored over 40 peer-reviewed publications, coauthored a book chapter, and presented widely at national and international forums. He has served as Head of Internal Medicine, led the renal unit for over two decades, and held leadership roles in the Ethiopian Medical Association, the Ministry of Health, ISN, AFRAN, and currently the Declaration of Istanbul Custodian Group."
+        }
       ],
       "Kenya": [
-        { name: "Dr. Mercy Wanjiku", role: "Nephrologist" },
-        { name: "Dr. Daniel Otieno", role: "Transplant Specialist" }
+        {
+          name: "Dr. Khalida B. Soki MD FISN",
+          role: "Nephrica Consortium member from Kenya."
+        }
       ],
-      "South Africa": [
-        { name: "Dr. Thabo Ndlovu", role: "Nephrologist" },
-        { name: "Dr. Naledi Moletsane", role: "Academic Research Collaborator" }
+      "Congo": [
+        {
+          name: "Dr. Nlandu Mayamba N. Yannick",
+          role: "Nephrica Consortium member from Congo."
+        }
       ]
     };
 
-    const countries = document.querySelectorAll(".country");
-    const memberContent = document.getElementById("memberContent");
+    function renderMembers(countryName) {
+      const memberContent = document.getElementById("memberContent");
+      const members = membersData[countryName] || [];
 
-    countries.forEach(country => {
-      country.addEventListener("click", () => {
-        countries.forEach(c => c.classList.remove("active"));
-        country.classList.add("active");
+      let html = `<div class="selected-country">${countryName}</div>`;
 
-        const countryName = country.id;
-        const members = membersData[countryName] || [];
+      if (members.length > 0) {
+        html += `<ul class="member-list">`;
+        members.forEach(member => {
+          html += `
+            <li>
+              <span class="member-name">${member.name}</span>
+              <span class="member-role">${member.role}</span>
+            </li>
+          `;
+        });
+        html += `</ul>`;
+      } else {
+        html += `<p class="default-text">No members have been added for this country yet.</p>`;
+      }
 
-        let html = `<div class="selected-country">${countryName}</div>`;
+      memberContent.innerHTML = html;
+    }
 
-        if (members.length > 0) {
-          html += `<ul class="member-list">`;
-          members.forEach(member => {
-            html += `
-              <li>
-                <span class="member-name">${member.name}</span>
-                <span class="member-role">${member.role}</span>
-              </li>
-            `;
-          });
-          html += `</ul>`;
-        } else {
-          html += `<p class="default-text">No members have been added for this country yet.</p>`;
+    document.getElementById("africaMap").addEventListener("load", function () {
+      const svgDoc = this.contentDocument;
+      if (!svgDoc) return;
+
+      const allCountryIdsToDim = [
+        "Morocco",
+        "Algeria",
+        "Tunisia",
+        "Libya",
+        "Egypt",
+        "Mauritania",
+        "Mali",
+        "Senegal",
+        "Gambia",
+        "Guinea",
+        "Guinea-Bissau",
+        "SierraLeone",
+        "Liberia",
+        "IvoryCoast",
+        "Ghana",
+        "Togo",
+        "Benin",
+        "Nigeria",
+        "Niger",
+        "Chad",
+        "Cameroon",
+        "CentralAfricanRepublic",
+        "Sudan",
+        "SouthSudan",
+        "Eritrea",
+        "Djibouti",
+        "Somalia",
+        "Ethiopia",
+        "Uganda",
+        "Kenya",
+        "Rwanda",
+        "Burundi",
+        "Tanzania",
+        "Angola",
+        "Zambia",
+        "Zimbabwe",
+        "Namibia",
+        "Botswana",
+        "SouthAfrica",
+        "South Africa",
+        "Mozambique",
+        "Madagascar",
+        "Congo",
+        "DRC",
+        "DemocraticRepublicOfCongo",
+        "Democratic Republic of the Congo",
+        "RepublicOfCongo"
+      ];
+
+      const clickableCountries = [
+        { ids: ["Ethiopia"], display: "Ethiopia" },
+        { ids: ["Kenya"], display: "Kenya" },
+        { ids: ["Congo", "DRC", "DemocraticRepublicOfCongo", "Democratic Republic of the Congo", "RepublicOfCongo"], display: "Congo" }
+      ];
+
+      allCountryIdsToDim.forEach(id => {
+        const el = svgDoc.getElementById(id);
+        if (el) {
+          el.style.fill = "#d9d1e8";
+          el.style.stroke = "#ffffff";
+          el.style.strokeWidth = "1.2";
+          el.style.cursor = "default";
+          el.style.transition = "fill 0.2s ease";
         }
+      });
 
-        memberContent.innerHTML = html;
+      clickableCountries.forEach(country => {
+        country.ids.forEach(id => {
+          const el = svgDoc.getElementById(id);
+          if (el) {
+            el.style.fill = "#6a42b8";
+            el.style.stroke = "#ffffff";
+            el.style.strokeWidth = "1.5";
+            el.style.cursor = "pointer";
+
+            el.addEventListener("mouseenter", () => {
+              if (!el.dataset.active) {
+                el.style.fill = "#8a63d2";
+              }
+            });
+
+            el.addEventListener("mouseleave", () => {
+              if (!el.dataset.active) {
+                el.style.fill = "#6a42b8";
+              }
+            });
+
+            el.addEventListener("click", () => {
+              clickableCountries.forEach(otherCountry => {
+                otherCountry.ids.forEach(otherId => {
+                  const otherEl = svgDoc.getElementById(otherId);
+                  if (otherEl) {
+                    otherEl.dataset.active = "";
+                    otherEl.style.fill = "#6a42b8";
+                  }
+                });
+              });
+
+              country.ids.forEach(activeId => {
+                const activeEl = svgDoc.getElementById(activeId);
+                if (activeEl) {
+                  activeEl.dataset.active = "true";
+                  activeEl.style.fill = "#d24ca3";
+                }
+              });
+
+              renderMembers(country.display);
+            });
+          }
+        });
       });
     });
   </script>
