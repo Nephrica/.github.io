@@ -3,92 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <title>Africa Nephrology Symposium</title>
-  <link rel="stylesheet" href="style.css">
+
   <style>
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
+      font-family: Arial;
+      margin: 0;
+      background: #f5f5f5;
     }
 
     h1 {
       text-align: center;
+      background: #0b3d5c;
+      color: white;
+      padding: 20px;
+      margin: 0;
+    }
+
+    #africaMap {
+      width: 100%;
+      height: 600px;
+      display: block;
+      margin: auto;
     }
 
     section {
-      margin-top: 100px;
+      background: white;
+      margin: 30px;
       padding: 20px;
-      border-top: 2px solid #ccc;
-    }
-
-    /* Optional: make map fit nicely */
-    #africaMap {
-      display: block;
-      margin: 0 auto;
-      max-width: 600px;
-      cursor: pointer;
-    }
-
-    /* Optional hover effect */
-    .country:hover {
-      fill: orange !important;
+      border-radius: 10px;
     }
   </style>
 </head>
+
 <body>
 
-<h1>Africa Nephrology Transplant Symposium</h1>
-<p style="text-align:center;">Click a country to see participating doctors</p>
+<h1>African Nephrology Transplant Symposium</h1>
 
 <!-- MAP -->
 <object type="image/svg+xml" data="africa.svg" id="africaMap"></object>
 
-<!-- COUNTRY SECTIONS -->
-<section id="kenya">
+<!-- KENYA -->
+<section id="KE">
   <h2>Kenya</h2>
-  <p>Dr. John Doe – Nephrologist</p>
-  <p>Dr. Jane Smith – Transplant Surgeon</p>
+  <p>Dr. Example – Nephrologist</p>
 </section>
 
-<section id="nigeria">
-  <h2>Nigeria</h2>
-  <p>Dr. Ahmed – Nephrologist</p>
+<!-- ETHIOPIA -->
+<section id="ET">
+  <h2>Ethiopia</h2>
+  <p>Dr. Example – Nephrologist</p>
 </section>
 
-<section id="ghana">
-  <h2>Ghana</h2>
-  <p>Dr. Kwame – Nephrologist</p>
+<!-- CONGO (DRC) -->
+<section id="CD">
+  <h2>Democratic Republic of the Congo</h2>
+  <p>Dr. Example – Nephrologist</p>
+</section>
+
+<!-- CONGO (Republic) -->
+<section id="CG">
+  <h2>Republic of the Congo</h2>
+  <p>Dr. Example – Nephrologist</p>
 </section>
 
 <script>
 document.getElementById("africaMap").addEventListener("load", function () {
   const svg = this.contentDocument;
 
-  // Kenya
-  const kenya = svg.getElementById("kenya");
-  if(kenya){
-    kenya.classList.add("country");
-    kenya.addEventListener("click", function () {
-      document.getElementById("kenya").scrollIntoView({ behavior: "smooth" });
-    });
-  }
+  const countries = ["KE", "ET", "CD", "CG"];
 
-  // Nigeria
-  const nigeria = svg.getElementById("nigeria");
-  if(nigeria){
-    nigeria.classList.add("country");
-    nigeria.addEventListener("click", function () {
-      document.getElementById("nigeria").scrollIntoView({ behavior: "smooth" });
-    });
-  }
+  countries.forEach(id => {
+    const country = svg.getElementById(id);
 
-  // Ghana
-  const ghana = svg.getElementById("ghana");
-  if(ghana){
-    ghana.classList.add("country");
-    ghana.addEventListener("click", function () {
-      document.getElementById("ghana").scrollIntoView({ behavior: "smooth" });
-    });
-  }
+    if(country){
+      country.style.cursor = "pointer";
+
+      country.addEventListener("click", function () {
+        document.getElementById(id).scrollIntoView({
+          behavior: "smooth"
+        });
+      });
+
+      // hover effect
+      country.addEventListener("mouseover", function () {
+        country.style.fill = "orange";
+      });
+
+      country.addEventListener("mouseout", function () {
+        country.style.fill = "#f2f2f2";
+      });
+    }
+  });
 });
 </script>
 
