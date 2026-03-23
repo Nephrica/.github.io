@@ -4,44 +4,93 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About</title>
+
   <style>
+    :root {
+      --deep-purple: #4b2e83;
+      --mid-purple: #6d4db3;
+      --light-purple: #efe8fb;
+      --soft-purple: #f8f5fc;
+      --text-dark: #2b2238;
+      --border: #e7dcf5;
+    }
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
-      background: #f5f5f5;
+      background: white;
+      color: var(--text-dark);
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     nav {
-      background: #08324b;
-      padding: 15px;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 18px;
       text-align: center;
     }
 
     nav a {
-      color: white;
+      color: var(--deep-purple);
       text-decoration: none;
       margin: 0 18px;
       font-weight: bold;
+      transition: color 0.25s ease;
     }
 
     nav a:hover {
-      text-decoration: underline;
+      color: var(--mid-purple);
     }
 
     .content {
       max-width: 900px;
       margin: 40px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
+      background: var(--soft-purple);
+      padding: 40px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 25px rgba(75, 46, 131, 0.08);
     }
 
     h1 {
-      color: #0b3d5c;
+      color: var(--deep-purple);
       margin-top: 0;
+      font-size: 2.5rem;
+      text-align: center;
+    }
+
+    .text {
+      margin-top: 20px;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    .text p {
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        margin: 20px;
+        padding: 25px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <nav>
@@ -53,9 +102,21 @@
   </nav>
 
   <div class="content">
-    <h1>About</h1>
-    <p>This project focuses on nephrology and transplant collaboration across Africa.</p>
-    <p>Add your mission statement, goals, symposium background, and research purpose here.</p>
+    <h1>About NEPHRICA</h1>
+
+    <div class="text">
+      <p>
+        The Nephrica Consortium is a collaborative, multi-country initiative focused on improving the understanding and management of glomerular diseases across Africa. By bringing together clinicians and researchers from diverse regions and healthcare settings, the consortium aims to understand current practices, identify gaps in care, and promote equitable access to diagnosis and treatment.
+      </p>
+
+      <p>
+        Through coordinated data collection efforts and regional engagement, the Nephrica consortium seeks to better define patterns in the presentation, diagnosis, and management of glomerular diseases across the continent. The initiative emphasizes collaboration, knowledge sharing, and the development of context-specific research priorities that reflect the realities of kidney disease care in African healthcare systems.
+      </p>
+
+      <p>
+        The consortium engages physicians practicing across Africa, including nephrologists, transplant surgeons, and primary care physicians involved in the diagnosis, management, or referral of patients with suspected or confirmed glomerular diseases. By leveraging the expertise and experience of clinicians working within their local settings, Nephrica aims to generate meaningful insights that will inform future research, strengthen regional partnerships, and ultimately improve outcomes for patients with kidney disease.
+      </p>
+    </div>
   </div>
 
 </body>
