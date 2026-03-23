@@ -1,169 +1,386 @@
-<style>
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Members | NEPHRICA</title>
+  <style>
+    :root {
+      --deep-purple: #4b2e83;
+      --mid-purple: #6d4db3;
+      --light-purple: #efe8fb;
+      --soft-purple: #f8f5fc;
+      --card-purple: #fbf9fe;
+      --text-dark: #2b2238;
+      --muted-text: #5e5470;
+      --white: #ffffff;
+      --border: #e4daf5;
+      --shadow: 0 8px 22px rgba(75, 46, 131, 0.08);
+    }
 
-  body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #1a0933, #2a0f4a, #3a1464);
-    color: white;
-  }
+    * {
+      box-sizing: border-box;
+    }
 
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 18px 40px;
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--white);
+      color: var(--text-dark);
+    }
 
-  .logo {
-    font-size: 1.6rem;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-  }
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 20px;
+      text-align: center;
+    }
 
-  nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 24px;
-    font-weight: 500;
-    transition: 0.3s ease;
-  }
+    nav a {
+      color: var(--deep-purple);
+      text-decoration: none;
+      margin: 0 18px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
 
-  nav a:hover {
-    color: #c084fc;
-  }
+    nav a:hover {
+      color: var(--mid-purple);
+    }
 
-  .hero {
-    text-align: center;
-    padding: 70px 20px 30px;
-  }
+    .hero {
+      background: linear-gradient(135deg, var(--deep-purple), var(--mid-purple));
+      color: white;
+      text-align: center;
+      padding: 56px 20px 48px 20px;
+    }
 
-  .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
-  }
+    .hero h1 {
+      margin: 0 0 12px 0;
+      font-size: 2.2rem;
+      letter-spacing: 0.2px;
+    }
 
-  .hero p {
-    max-width: 850px;
-    margin: auto;
-    color: #d6c7f7;
-    font-size: 1.1rem;
-  }
+    .hero p {
+      margin: 0 auto;
+      max-width: 860px;
+      font-size: 1.02rem;
+      line-height: 1.65;
+    }
 
-  .main-section {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 28px;
-    padding: 20px 40px 60px;
-    max-width: 1300px;
-    margin: 0 auto;
-  }
+    .main-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 34px 20px 60px 20px;
+    }
 
-  .card {
-    background: rgba(255,255,255,0.06);
-    border-radius: 20px;
-    padding: 24px;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-    border: 1px solid rgba(255,255,255,0.08);
-  }
+    .section-card,
+    .map-container,
+    #infoBox {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
 
-  .card h2 {
-    margin-bottom: 15px;
-    font-size: 1.6rem;
-  }
+    .section-card {
+      padding: 30px;
+      margin-bottom: 26px;
+    }
 
-  .subtext {
-    color: #cbb6ff;
-    margin-bottom: 15px;
-  }
+    .section-title {
+      margin: 0 0 10px 0;
+      color: var(--deep-purple);
+      font-size: 1.7rem;
+    }
 
-  .map-wrapper {
-    background: rgba(255,255,255,0.03);
-    border-radius: 16px;
-    padding: 10px;
-  }
+    .section-intro {
+      margin: 0 0 24px 0;
+      color: var(--muted-text);
+      line-height: 1.65;
+      max-width: 900px;
+    }
 
-  svg {
-    width: 100%;
-  }
+    .member-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
 
-  .africa-outline {
-    fill: rgba(255,255,255,0.05);
-    stroke: rgba(255,255,255,0.2);
-  }
-
-  .country {
-    fill: #7c3aed;
-    stroke: #e9d5ff;
-    stroke-width: 1.5;
-    cursor: pointer;
-    transition: 0.25s ease;
-  }
-
-  .country:hover {
-    fill: #a855f7;
-  }
-
-  .country.active {
-    fill: #facc15;
-    stroke: white;
-  }
-
-  .country-label {
-    fill: white;
-    font-size: 12px;
-    pointer-events: none;
-  }
-
-  .selected-country {
-    font-size: 1.4rem;
-    color: #facc15;
-    margin-bottom: 12px;
-  }
-
-  .default-text {
-    color: #d6c7f7;
-  }
-
-  .member-list li {
-    background: rgba(255,255,255,0.05);
-    border-left: 4px solid #c084fc;
-    border-radius: 10px;
-    padding: 12px;
-    margin-bottom: 12px;
-  }
-
-  .member-name {
-    font-weight: bold;
-  }
-
-  .member-role {
-    color: #d6c7f7;
-    font-size: 0.95rem;
-  }
-
-  footer {
-    text-align: center;
-    padding: 25px;
-    color: #cbb6ff;
-    border-top: 1px solid rgba(255,255,255,0.08);
-  }
-
-  @media (max-width: 900px) {
-    .main-section {
-      grid-template-columns: 1fr;
+    .member-card {
+      background: var(--card-purple);
+      border: 1px solid var(--border);
+      border-radius: 16px;
       padding: 20px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    header {
-      flex-direction: column;
-      gap: 10px;
+    .member-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(75, 46, 131, 0.08);
     }
-  }
-</style>
+
+    .member-card h3 {
+      margin: 0 0 10px 0;
+      color: var(--deep-purple);
+      font-size: 1.08rem;
+    }
+
+    .member-card p {
+      margin: 7px 0;
+      line-height: 1.5;
+      color: var(--text-dark);
+    }
+
+    .map-container {
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+
+    .map-heading {
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .map-heading h2 {
+      margin: 0 0 8px 0;
+      color: var(--deep-purple);
+      font-size: 1.7rem;
+    }
+
+    .map-heading p {
+      margin: 0 auto;
+      max-width: 760px;
+      color: var(--muted-text);
+      line-height: 1.6;
+    }
+
+    #africaMap {
+      width: 100%;
+      height: 560px;
+      display: block;
+      border: none;
+      background: var(--white);
+      border-radius: 12px;
+    }
+
+    #infoBox {
+      padding: 28px;
+      display: none;
+    }
+
+    #countryTitle {
+      margin: 0 0 14px 0;
+      color: var(--deep-purple);
+      font-size: 1.5rem;
+    }
+
+    #countryContent p {
+      margin: 10px 0;
+      line-height: 1.6;
+      color: var(--text-dark);
+    }
+
+    .close-btn {
+      background: var(--deep-purple);
+      color: white;
+      border: none;
+      padding: 11px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 16px;
+      font-weight: 700;
+      transition: background 0.2s ease;
+    }
+
+    .close-btn:hover {
+      background: var(--mid-purple);
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 26px 20px;
+      text-align: center;
+      color: #6a5d82;
+      border-top: 1px solid var(--border);
+      background: var(--soft-purple);
+    }
+
+    @media (max-width: 700px) {
+      nav a {
+        display: inline-block;
+        margin: 8px 10px;
+      }
+
+      .hero h1 {
+        font-size: 1.85rem;
+      }
+
+      .hero p {
+        font-size: 0.98rem;
+      }
+
+      .section-card,
+      .map-container,
+      #infoBox {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      #africaMap {
+        height: 430px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="members.html">Members</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <section class="hero">
+    <h1>Members</h1>
+    <p>
+      Our consortium includes an international network of clinicians, researchers, and project contributors.
+      Core team members in the United States support coordination, outreach, and research development, while African collaborators are represented below by country.
+    </p>
+  </section>
+
+  <div class="main-wrap">
+
+    <div class="section-card">
+      <h2 class="section-title">Core Team</h2>
+      <p class="section-intro">
+        This section highlights project leadership, coordination, and U.S.-based contributors supporting NEPHRICA’s symposium, outreach, and research goals.
+      </p>
+
+      <div class="member-grid">
+        <div class="member-card">
+          <h3>Zach Kushner</h3>
+          <p><strong>Role:</strong> Research Contributor / Website Development</p>
+          <p><strong>Location:</strong> United States</p>
+          <p><strong>Institution:</strong> Add your institution here</p>
+        </div>
+
+        <div class="member-card">
+          <h3>U.S. Contributor Name</h3>
+          <p><strong>Role:</strong> Project Support</p>
+          <p><strong>Location:</strong> United States</p>
+          <p><strong>Institution:</strong> Add institution here</p>
+        </div>
+
+        <div class="member-card">
+          <h3>Faculty Mentor / Advisor</h3>
+          <p><strong>Role:</strong> Advisor</p>
+          <p><strong>Location:</strong> United States</p>
+          <p><strong>Institution:</strong> Add institution here</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-container">
+      <div class="map-heading">
+        <h2>African Collaborators</h2>
+        <p>
+          Select a country on the map to view participating physicians, collaborators, and institutions in that location.
+        </p>
+      </div>
+
+      <object type="image/svg+xml" data="africa.svg" id="africaMap"></object>
+    </div>
+
+    <div id="infoBox">
+      <h2 id="countryTitle"></h2>
+      <div id="countryContent"></div>
+      <button class="close-btn" onclick="closeInfo()">Close</button>
+    </div>
+
+  </div>
+
+  <footer>
+    NEPHRICA | Nephrology Research and Innovation Consortium for Africa
+  </footer>
+
+  <script>
+    const countryData = {
+      KE: `
+        <p><strong>Kenya</strong></p>
+        <p><strong>Dr. Example Name</strong> – Nephrologist</p>
+        <p>Example Hospital / Institution</p>
+        <p><strong>Dr. Example Name</strong> – Transplant Specialist</p>
+        <p>Example Hospital / Institution</p>
+      `,
+      ET: `
+        <p><strong>Ethiopia</strong></p>
+        <p><strong>Dr. Example Name</strong> – Nephrologist</p>
+        <p>Example Hospital / Institution</p>
+      `,
+      CD: `
+        <p><strong>Democratic Republic of the Congo</strong></p>
+        <p><strong>Dr. Example Name</strong> – Nephrologist</p>
+        <p>Example Hospital / Institution</p>
+      `,
+      CG: `
+        <p><strong>Republic of the Congo</strong></p>
+        <p><strong>Dr. Example Name</strong> – Nephrologist</p>
+        <p>Example Hospital / Institution</p>
+      `
+    };
+
+    const countryNames = {
+      KE: "Kenya",
+      ET: "Ethiopia",
+      CD: "Democratic Republic of the Congo",
+      CG: "Republic of the Congo"
+    };
+
+    function showInfo(countryCode) {
+      const infoBox = document.getElementById("infoBox");
+      const title = document.getElementById("countryTitle");
+      const content = document.getElementById("countryContent");
+
+      title.textContent = countryNames[countryCode];
+      content.innerHTML = countryData[countryCode];
+      infoBox.style.display = "block";
+      infoBox.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function closeInfo() {
+      document.getElementById("infoBox").style.display = "none";
+    }
+
+    document.getElementById("africaMap").addEventListener("load", function () {
+      const svg = this.contentDocument;
+      const countries = ["KE", "ET", "CD", "CG"];
+
+      countries.forEach(id => {
+        const country = svg.getElementById(id);
+
+        if (country) {
+          country.style.cursor = "pointer";
+          country.style.transition = "fill 0.2s ease";
+
+          country.addEventListener("click", function () {
+            showInfo(id);
+          });
+
+          country.addEventListener("mouseover", function () {
+            country.style.fill = "#b79ced";
+          });
+
+          country.addEventListener("mouseout", function () {
+            country.style.fill = "#f2f2f2";
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
