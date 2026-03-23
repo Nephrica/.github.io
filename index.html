@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Africa Nephrology Symposium</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    section {
+      margin-top: 100px;
+      padding: 20px;
+      border-top: 2px solid #ccc;
+    }
+
+    /* Optional: make map fit nicely */
+    #africaMap {
+      display: block;
+      margin: 0 auto;
+      max-width: 600px;
+      cursor: pointer;
+    }
+
+    /* Optional hover effect */
+    .country:hover {
+      fill: orange !important;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Africa Nephrology Transplant Symposium</h1>
+<p style="text-align:center;">Click a country to see participating doctors</p>
+
+<!-- MAP -->
+<object type="image/svg+xml" data="africa.svg" id="africaMap"></object>
+
+<!-- COUNTRY SECTIONS -->
+<section id="kenya">
+  <h2>Kenya</h2>
+  <p>Dr. John Doe – Nephrologist</p>
+  <p>Dr. Jane Smith – Transplant Surgeon</p>
+</section>
+
+<section id="nigeria">
+  <h2>Nigeria</h2>
+  <p>Dr. Ahmed – Nephrologist</p>
+</section>
+
+<section id="ghana">
+  <h2>Ghana</h2>
+  <p>Dr. Kwame – Nephrologist</p>
+</section>
+
+<script>
+document.getElementById("africaMap").addEventListener("load", function () {
+  const svg = this.contentDocument;
+
+  // Kenya
+  const kenya = svg.getElementById("kenya");
+  if(kenya){
+    kenya.classList.add("country");
+    kenya.addEventListener("click", function () {
+      document.getElementById("kenya").scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
+  // Nigeria
+  const nigeria = svg.getElementById("nigeria");
+  if(nigeria){
+    nigeria.classList.add("country");
+    nigeria.addEventListener("click", function () {
+      document.getElementById("nigeria").scrollIntoView({ behavior: "smooth" });
+    });
+  }
+
+  // Ghana
+  const ghana = svg.getElementById("ghana");
+  if(ghana){
+    ghana.classList.add("country");
+    ghana.addEventListener("click", function () {
+      document.getElementById("ghana").scrollIntoView({ behavior: "smooth" });
+    });
+  }
+});
+</script>
+
+</body>
+</html>
