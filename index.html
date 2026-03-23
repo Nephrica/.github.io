@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NEPHRICA</title>
+
   <style>
     :root {
       --deep-purple: #4b2e83;
@@ -11,224 +12,115 @@
       --light-purple: #efe8fb;
       --soft-purple: #f8f5fc;
       --text-dark: #2b2238;
-      --white: #ffffff;
       --border: #e7dcf5;
-      --shadow: 0 8px 22px rgba(75, 46, 131, 0.10);
-    }
-
-    * {
-      box-sizing: border-box;
     }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: var(--white);
+      background: white;
       color: var(--text-dark);
     }
 
+    /* NAV */
     nav {
-      background: var(--white);
+      background: white;
       border-bottom: 1px solid var(--border);
-      padding: 18px 20px;
+      padding: 18px;
       text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     }
 
     nav a {
       color: var(--deep-purple);
       text-decoration: none;
       margin: 0 18px;
-      font-weight: 700;
-      font-size: 0.95rem;
+      font-weight: bold;
     }
 
     nav a:hover {
       color: var(--mid-purple);
     }
 
+    /* HERO */
     .hero {
+      text-align: center;
+      padding: 40px 20px 20px 20px;
       background: linear-gradient(180deg, #ffffff 0%, #faf7fe 100%);
-      padding: 48px 20px 28px 20px;
     }
 
-    .hero-inner {
-      max-width: 1150px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .hero-image {
-      width: 100%;
-      max-width: 1220px;
+    .hero img {
+      max-width: 100%;
       height: auto;
-      display: block;
-      margin: 0 auto 18px auto;
+      margin-bottom: 15px;
     }
 
-    .hero-tagline {
-      font-size: 1.05rem;
+    .tagline {
+      font-weight: bold;
       color: var(--deep-purple);
-      font-weight: 700;
-      margin: 0 auto;
-      max-width: 900px;
+      font-size: 1.1rem;
     }
 
-    .main-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 30px 20px 60px 20px;
-    }
-
-    .intro-card,
-    .feature-card,
-    .cta-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .intro-card {
-      padding: 30px;
-      margin-bottom: 28px;
+    /* CONTENT */
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
       text-align: center;
     }
 
-    .intro-card h1 {
-      margin-top: 0;
-      margin-bottom: 12px;
-      color: var(--deep-purple);
-      font-size: 2rem;
-    }
-
-    .intro-card p {
-      margin: 0 auto;
-      max-width: 850px;
-      line-height: 1.7;
-      color: #56496c;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 22px;
-      margin-bottom: 28px;
-    }
-
-    .feature-card {
-      padding: 24px;
-    }
-
-    .feature-card h2 {
-      margin-top: 0;
-      margin-bottom: 10px;
-      color: var(--deep-purple);
-      font-size: 1.2rem;
-    }
-
-    .feature-card p {
-      margin: 0 0 16px 0;
-      line-height: 1.6;
-      color: #5f5276;
-    }
-
-    .feature-link {
-      display: inline-block;
-      text-decoration: none;
-      color: var(--mid-purple);
-      font-weight: 700;
-    }
-
-    .feature-link:hover {
+    h1 {
       color: var(--deep-purple);
     }
 
-    .cta-card {
-      padding: 30px;
-      text-align: center;
-      background: linear-gradient(180deg, #ffffff 0%, var(--soft-purple) 100%);
-    }
-
-    .cta-card h2 {
-      margin-top: 0;
-      color: var(--deep-purple);
-    }
-
-    .cta-card p {
-      margin: 0 auto 20px auto;
-      max-width: 760px;
-      line-height: 1.7;
-      color: #5a4c72;
-    }
-
-    .cta-buttons {
+    .cards {
       display: flex;
-      gap: 14px;
-      justify-content: center;
       flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px;
+      justify-content: center;
     }
 
-    .btn-primary,
-    .btn-secondary {
+    .card {
+      flex: 1 1 250px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .card h2 {
+      color: var(--deep-purple);
+      margin-top: 0;
+    }
+
+    .btn {
       display: inline-block;
-      padding: 12px 20px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .btn-primary {
+      margin-top: 10px;
+      padding: 10px 15px;
       background: var(--deep-purple);
       color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
     }
 
-    .btn-primary:hover {
+    .btn:hover {
       background: var(--mid-purple);
-    }
-
-    .btn-secondary {
-      background: var(--light-purple);
-      color: var(--deep-purple);
-    }
-
-    .btn-secondary:hover {
-      background: #e5daf8;
     }
 
     footer {
       margin-top: 40px;
-      padding: 28px 20px;
+      padding: 20px;
       text-align: center;
-      color: #6a5d82;
-      border-top: 1px solid var(--border);
       background: var(--soft-purple);
-    }
-
-    @media (max-width: 700px) {
-      nav a {
-        display: inline-block;
-        margin: 8px 10px;
-      }
-
-      .hero {
-        padding-top: 28px;
-      }
-
-      .intro-card h1 {
-        font-size: 1.6rem;
-      }
-
-      .hero-tagline {
-        font-size: 0.98rem;
-      }
+      border-top: 1px solid var(--border);
     }
   </style>
 </head>
+
 <body>
 
+  <!-- NAV -->
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -237,60 +129,54 @@
     <a href="contact.html">Contact</a>
   </nav>
 
-  <section class="hero">
-    <div class="hero-inner">
-      <img src="nephrica-home.png" alt="NEPHRICA logo and title" class="hero-image">
-      <p class="hero-tagline">
-        Advancing nephrology education, care, and collaboration across Africa
-      </p>
-    </div>
-  </section>
+  <!-- HERO -->
+  <div class="hero">
 
-  <div class="main-wrap">
+    <!-- LOGO IMAGE -->
+    <!-- IMPORTANT: file must match EXACTLY -->
+    <img src="nephrica-home.png" alt="NEPHRICA Logo">
 
-    <div class="intro-card">
-      <h1>Welcome to NEPHRICA</h1>
-      <p>
-        The Nephrology Research and Innovation Consortium for Africa is dedicated to building collaboration,
-        expanding research partnerships, and supporting innovation in kidney care and transplantation across the continent.
-      </p>
-    </div>
+    <!-- FALLBACK TEXT (shows if image fails) -->
+    <h2 style="color:red; margin:0;">
+      If you see this text → image is NOT loading
+    </h2>
 
-    <div class="features">
-      <div class="feature-card">
-        <h2>About the Consortium</h2>
-        <p>
-          Learn more about the mission, vision, and goals of NEPHRICA and the broader collaborative work driving this initiative.
-        </p>
-        <a class="feature-link" href="about.html">Learn more →</a>
+    <p class="tagline">
+      Advancing nephrology education, care, and collaboration across Africa
+    </p>
+
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+
+    <h1>Welcome to NEPHRICA</h1>
+
+    <p>
+      The Nephrology Research and Innovation Consortium for Africa is dedicated to
+      expanding collaboration, advancing research, and improving kidney care and transplantation across Africa.
+    </p>
+
+    <div class="cards">
+
+      <div class="card">
+        <h2>About</h2>
+        <p>Learn about our mission and goals.</p>
+        <a class="btn" href="about.html">Learn More</a>
       </div>
 
-      <div class="feature-card">
+      <div class="card">
         <h2>Members</h2>
-        <p>
-          Meet the core team and explore African collaborators by country through the interactive members map.
-        </p>
-        <a class="feature-link" href="members.html">View members →</a>
+        <p>Explore our international team and African collaborators.</p>
+        <a class="btn" href="members.html">View Members</a>
       </div>
 
-      <div class="feature-card">
+      <div class="card">
         <h2>Projects</h2>
-        <p>
-          Explore active initiatives, consortium priorities, and research efforts related to nephrology and transplantation.
-        </p>
-        <a class="feature-link" href="projects.html">View projects →</a>
+        <p>See current initiatives and research efforts.</p>
+        <a class="btn" href="projects.html">View Projects</a>
       </div>
-    </div>
 
-    <div class="cta-card">
-      <h2>Explore the Network</h2>
-      <p>
-        Discover the clinicians, researchers, and project contributors helping advance kidney health collaboration across Africa.
-      </p>
-      <div class="cta-buttons">
-        <a class="btn-primary" href="members.html">Go to Members</a>
-        <a class="btn-secondary" href="contact.html">Contact Us</a>
-      </div>
     </div>
 
   </div>
