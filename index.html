@@ -77,9 +77,9 @@
     .tagline {
       font-weight: bold;
       color: var(--deep-purple);
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       line-height: 1.4;
-      margin: 0 auto 10px auto;
+      margin: 4px auto 10px auto;
       max-width: 900px;
       opacity: 0;
       animation: fadeOnly 0.9s ease 0.4s forwards;
@@ -93,7 +93,7 @@
 
     .container {
       max-width: 1000px;
-      margin: 20px auto;
+      margin: 10px auto;
       padding: 0 20px;
       text-align: center;
     }
@@ -166,41 +166,13 @@
     }
 
     footer {
-      margin-top: 30px;
+      margin-top: 20px;
       padding: 20px;
       text-align: center;
       background: var(--soft-purple);
       border-top: 1px solid var(--border);
       opacity: 0;
       animation: fadeOnly 0.9s ease 1.25s forwards;
-    }
-
-    @media (max-width: 768px) {
-      nav a {
-        display: inline-block;
-        margin: 8px 10px;
-      }
-
-      .hero {
-        padding: 16px 16px 8px 16px;
-      }
-
-      .hero-logo {
-        max-width: 100%;
-      }
-
-      .tagline {
-        font-size: 1.2rem;
-        max-width: 95%;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      .container {
-        margin: 14px auto;
-      }
     }
   </style>
 </head>
@@ -216,7 +188,14 @@
   </nav>
 
   <div class="hero">
-    <img src="./nephrica.png.png" alt="NEPHRICA Logo" class="hero-logo">
+    
+    <!-- ✅ IMAGE FIX + DEBUG FALLBACK -->
+    <img 
+      src="./nephrica-home.png" 
+      alt="NEPHRICA Logo" 
+      class="hero-logo"
+      onerror="this.onerror=null; this.src='https://via.placeholder.com/900x300?text=Image+Not+Found'; console.log('Image not found - check file path');"
+    >
 
     <p class="tagline">
       Advancing nephrology education, care, and collaboration across Africa
