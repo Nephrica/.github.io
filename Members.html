@@ -1,48 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About | Nephrica Consortium</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
 
+  <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(180deg, #0b1f3a 0%, #102b50 100%);
+      background: linear-gradient(180deg, #0b1f3a, #102b50);
       color: white;
-      line-height: 1.6;
     }
 
     header {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(10px);
-      padding: 18px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      letter-spacing: 0.5px;
+      padding: 20px 40px;
+      background: rgba(255,255,255,0.05);
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 24px;
+      margin-left: 20px;
       font-weight: 500;
-      transition: 0.3s ease;
     }
 
     nav a:hover {
@@ -50,378 +33,170 @@
     }
 
     .hero {
-      padding: 70px 20px 40px;
       text-align: center;
-      max-width: 1100px;
-      margin: auto;
+      padding: 60px 20px 30px;
     }
 
     .hero h1 {
-      font-size: 3rem;
+      font-size: 2.8rem;
       margin-bottom: 20px;
     }
 
     .hero p {
-      font-size: 1.08rem;
-      color: #d9e7f5;
-      max-width: 950px;
-      margin: 0 auto;
+      max-width: 900px;
+      margin: auto;
+      color: #d3e2f1;
     }
 
-    .about-section {
-      max-width: 1200px;
-      margin: 30px auto 70px;
-      padding: 0 20px;
-    }
-
-    .map-members-container {
+    .container {
       display: grid;
-      grid-template-columns: 1.3fr 0.9fr;
-      gap: 28px;
-      align-items: start;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 30px;
+      padding: 40px;
     }
 
-    .map-card,
-    .members-card {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-      padding: 24px;
-    }
-
-    .map-card h2,
-    .members-card h2 {
-      margin-bottom: 16px;
-      font-size: 1.5rem;
-    }
-
-    .map-instructions {
-      color: #cfe0ef;
-      margin-bottom: 16px;
-      font-size: 0.96rem;
-    }
-
-    .map-wrapper {
-      width: 100%;
-      overflow: hidden;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.03);
-      padding: 10px;
+    .card {
+      background: rgba(255,255,255,0.06);
+      padding: 20px;
+      border-radius: 15px;
     }
 
     svg {
       width: 100%;
-      height: auto;
-      display: block;
     }
 
     .country {
       fill: #6fa8dc;
-      stroke: #dbeeff;
-      stroke-width: 1.5;
+      stroke: white;
       cursor: pointer;
-      transition: fill 0.25s ease, transform 0.2s ease;
-      transform-origin: center;
+      transition: 0.3s;
     }
 
     .country:hover {
       fill: #9fd3ff;
     }
 
-    .country.active {
-      fill: #ffd166;
-      stroke: white;
-      stroke-width: 2;
-    }
-
-    .country-label {
-      fill: white;
-      font-size: 12px;
-      pointer-events: none;
-      font-weight: bold;
-    }
-
-    .selected-country {
-      font-size: 1.25rem;
-      margin-bottom: 12px;
-      color: #ffd166;
-    }
-
-    .member-list {
-      list-style: none;
-      margin-top: 10px;
+    .active {
+      fill: #ffd166 !important;
     }
 
     .member-list li {
-      background: rgba(255,255,255,0.06);
+      margin-bottom: 10px;
+      padding: 10px;
+      background: rgba(255,255,255,0.05);
       border-left: 4px solid #7fc8ff;
-      padding: 12px 14px;
-      border-radius: 10px;
-      margin-bottom: 12px;
-    }
-
-    .member-list strong {
-      display: block;
-      font-size: 1rem;
-      color: #ffffff;
-    }
-
-    .member-list span {
-      color: #d3e2f1;
-      font-size: 0.94rem;
-    }
-
-    .default-message {
-      color: #d3e2f1;
-      font-size: 0.98rem;
-      margin-top: 10px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 26px 20px;
-      color: #c7d8ea;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      margin-top: 50px;
+      border-radius: 8px;
     }
 
     @media (max-width: 900px) {
-      .map-members-container {
+      .container {
         grid-template-columns: 1fr;
-      }
-
-      .hero h1 {
-        font-size: 2.3rem;
-      }
-
-      nav a {
-        margin-left: 14px;
-        font-size: 0.95rem;
-      }
-
-      header {
-        padding: 16px 20px;
-        flex-direction: column;
-        gap: 10px;
       }
     }
   </style>
 </head>
+
 <body>
 
-  <header>
-    <div class="logo">Nephrica Consortium</div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="members.html">Members</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+<header>
+  <div><strong>Nephrica Consortium</strong></div>
 
-  <section class="hero">
-    <h1>About Nephrica</h1>
-    <p>
-      The Nephrica Consortium is a collaborative, multi-country initiative focused on improving
-      the understanding and management of glomerular diseases across Africa. By bringing together
-      clinicians and researchers from diverse regions and healthcare settings, the consortium aims
-      to understand current practices, identify gaps in care, and promote equitable access to
-      diagnosis and treatment.
-      <br><br>
-      Through coordinated data collection efforts and regional engagement, the consortium seeks to
-      better define patterns in the presentation, diagnosis, and management of glomerular diseases
-      across the continent. The initiative emphasizes collaboration, knowledge sharing, and the
-      development of context-specific research priorities that reflect the realities of kidney
-      disease care in African healthcare systems.
-      <br><br>
-      The consortium engages physicians practicing across Africa, including nephrologists,
-      transplant surgeons, and primary care physicians involved in the diagnosis, management,
-      or referral of patients with suspected or confirmed glomerular diseases.
-    </p>
-  </section>
+  <!-- ✅ FIXED NAVBAR -->
+  <nav>
+    <a href="/index.html">Home</a>
+    <a href="/about.html">About</a>
+    <a href="/members.html">Members</a>
+    <a href="/projects.html">Projects</a>
+    <a href="/contact.html">Contact</a>
+  </nav>
+</header>
 
-  <section class="about-section">
-    <div class="map-members-container">
+<section class="hero">
+  <h1>About Nephrica</h1>
 
-      <div class="map-card">
-        <h2>Consortium Members Across Africa</h2>
-        <p class="map-instructions">
-          Click a highlighted country on the map to see the members involved.
-        </p>
+  <p>
+    The Nephrica Consortium is a collaborative, multi-country initiative focused on improving the understanding and management of glomerular diseases across Africa. By bringing together clinicians and researchers from diverse regions and healthcare settings, the consortium aims to understand current practices, identify gaps in care, and promote equitable access to diagnosis and treatment.
+    <br><br>
+    Through coordinated data collection efforts and regional engagement, the Nephrica consortium seeks to better define patterns in the presentation, diagnosis, and management of glomerular diseases across the continent. The initiative emphasizes collaboration, knowledge sharing, and the development of context-specific research priorities that reflect the realities of kidney disease care in African healthcare systems.
+    <br><br>
+    The consortium engages physicians practicing across Africa, including nephrologists, transplant surgeons, and primary care physicians involved in the diagnosis, management, or referral of patients with suspected or confirmed glomerular diseases.
+  </p>
+</section>
 
-        <div class="map-wrapper">
-          <svg viewBox="0 0 800 900" xmlns="http://www.w3.org/2000/svg" aria-label="Interactive Africa Map">
-            <!-- Simplified Africa background -->
-            <path
-              d="M318 78
-                 L390 60 L452 84 L520 130 L572 178
-                 L602 250 L620 320 L610 382
-                 L580 430 L560 505 L520 585
-                 L470 650 L430 725 L395 815
-                 L350 785 L330 720 L280 680
-                 L245 615 L205 540 L175 470
-                 L160 395 L170 315 L205 245
-                 L250 180 L285 125 Z"
-              fill="rgba(255,255,255,0.08)"
-              stroke="rgba(255,255,255,0.18)"
-              stroke-width="3"
-            />
+<div class="container">
 
-            <!-- Morocco -->
-            <polygon
-              id="Morocco"
-              class="country"
-              points="250,120 300,105 330,120 320,155 270,160 240,145"
-            ></polygon>
-            <text x="250" y="100" class="country-label">Morocco</text>
+  <!-- MAP -->
+  <div class="card">
+    <h2>Click a Country</h2>
 
-            <!-- Algeria -->
-            <polygon
-              id="Algeria"
-              class="country"
-              points="320,105 385,92 455,120 430,180 345,182 320,155"
-            ></polygon>
-            <text x="355" y="84" class="country-label">Algeria</text>
+    <svg viewBox="0 0 600 700">
 
-            <!-- Nigeria -->
-            <polygon
-              id="Nigeria"
-              class="country"
-              points="315,345 360,338 385,370 372,418 325,425 300,390"
-            ></polygon>
-            <text x="305" y="332" class="country-label">Nigeria</text>
+      <polygon id="Nigeria" class="country"
+        points="250,300 320,290 340,340 310,380 260,370"></polygon>
 
-            <!-- Kenya -->
-            <polygon
-              id="Kenya"
-              class="country"
-              points="470,405 515,398 530,438 508,492 460,480 452,438"
-            ></polygon>
-            <text x="470" y="390" class="country-label">Kenya</text>
+      <polygon id="Kenya" class="country"
+        points="380,320 430,310 450,360 420,400 370,380"></polygon>
 
-            <!-- South Africa -->
-            <polygon
-              id="South Africa"
-              class="country"
-              points="350,700 420,682 470,720 448,775 382,790 330,750"
-            ></polygon>
-            <text x="335" y="670" class="country-label">South Africa</text>
+      <polygon id="South Africa" class="country"
+        points="300,550 380,540 420,580 360,620 290,600"></polygon>
 
-            <!-- Ghana -->
-            <polygon
-              id="Ghana"
-              class="country"
-              points="275,355 302,350 305,405 280,412 265,386"
-            ></polygon>
-            <text x="240" y="345" class="country-label">Ghana</text>
+      <polygon id="Egypt" class="country"
+        points="380,120 450,120 480,170 420,200 370,160"></polygon>
 
-            <!-- Egypt -->
-            <polygon
-              id="Egypt"
-              class="country"
-              points="470,120 542,118 565,160 515,192 455,170"
-            ></polygon>
-            <text x="500" y="103" class="country-label">Egypt</text>
+    </svg>
+  </div>
 
-            <!-- Ethiopia -->
-            <polygon
-              id="Ethiopia"
-              class="country"
-              points="500,300 565,292 590,340 560,388 500,380 478,340"
-            ></polygon>
-            <text x="500" y="283" class="country-label">Ethiopia</text>
-          </svg>
-        </div>
-      </div>
+  <!-- MEMBERS PANEL -->
+  <div class="card">
+    <h2>Members</h2>
+    <div id="membersBox">Click a country to view members</div>
+  </div>
 
-      <div class="members-card">
-        <h2>Country Members</h2>
-        <div id="memberContent">
-          <div class="selected-country">Select a country</div>
-          <p class="default-message">
-            Click on a country in the map to display the people involved from that location.
-          </p>
-        </div>
-      </div>
+</div>
 
-    </div>
-  </section>
+<script>
+const data = {
+  Nigeria: [
+    "Dr. Okafor – Nephrologist",
+    "Dr. Eze – Researcher"
+  ],
+  Kenya: [
+    "Dr. Wanjiku – Nephrologist"
+  ],
+  "South Africa": [
+    "Dr. Ndlovu – Specialist"
+  ],
+  Egypt: [
+    "Dr. Hassan – Coordinator"
+  ]
+};
 
-  <footer>
-    &copy; 2026 Nephrica Consortium. All rights reserved.
-  </footer>
+const countries = document.querySelectorAll(".country");
+const box = document.getElementById("membersBox");
 
-  <script>
-    const membersData = {
-      "Morocco": [
-        { name: "Dr. Amina El Idrissi", role: "Nephrologist" },
-        { name: "Dr. Youssef Bennani", role: "Clinical Research Lead" }
-      ],
-      "Algeria": [
-        { name: "Dr. Samir Khelifa", role: "Internal Medicine / Nephrology" }
-      ],
-      "Nigeria": [
-        { name: "Dr. Chinedu Okafor", role: "Nephrologist" },
-        { name: "Dr. Adaeze Eze", role: "Glomerular Disease Researcher" },
-        { name: "Dr. Ibrahim Bello", role: "Consultant Physician" }
-      ],
-      "Kenya": [
-        { name: "Dr. Mercy Wanjiku", role: "Nephrologist" },
-        { name: "Dr. Daniel Otieno", role: "Transplant Specialist" }
-      ],
-      "South Africa": [
-        { name: "Dr. Thabo Ndlovu", role: "Nephrologist" },
-        { name: "Dr. Naledi Moletsane", role: "Academic Research Collaborator" }
-      ],
-      "Ghana": [
-        { name: "Dr. Kwame Mensah", role: "Nephrology Consultant" }
-      ],
-      "Egypt": [
-        { name: "Dr. Omar Hassan", role: "Renal Pathway Coordinator" },
-        { name: "Dr. Salma Fawzy", role: "Clinical Investigator" }
-      ],
-      "Ethiopia": [
-        { name: "Dr. Hana Tesfaye", role: "Nephrologist" }
-      ]
-    };
+countries.forEach(c => {
+  c.addEventListener("click", () => {
 
-    const countries = document.querySelectorAll(".country");
-    const memberContent = document.getElementById("memberContent");
+    countries.forEach(x => x.classList.remove("active"));
+    c.classList.add("active");
 
-    countries.forEach(country => {
-      country.addEventListener("click", () => {
-        countries.forEach(c => c.classList.remove("active"));
-        country.classList.add("active");
+    let list = data[c.id] || [];
 
-        const countryName = country.id;
-        const members = membersData[countryName] || [];
+    if (list.length === 0) {
+      box.innerHTML = "No members added.";
+      return;
+    }
 
-        let html = `<div class="selected-country">${countryName}</div>`;
-
-        if (members.length > 0) {
-          html += `<ul class="member-list">`;
-          members.forEach(member => {
-            html += `
-              <li>
-                <strong>${member.name}</strong>
-                <span>${member.role}</span>
-              </li>
-            `;
-          });
-          html += `</ul>`;
-        } else {
-          html += `
-            <p class="default-message">
-              No members have been added for this country yet.
-            </p>
-          `;
-        }
-
-        memberContent.innerHTML = html;
-      });
+    let html = "<ul class='member-list'>";
+    list.forEach(m => {
+      html += `<li>${m}</li>`;
     });
-  </script>
+    html += "</ul>";
+
+    box.innerHTML = html;
+  });
+});
+</script>
 
 </body>
 </html>
