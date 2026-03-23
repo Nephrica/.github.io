@@ -1,383 +1,424 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Members | NEPHRICA</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Nephrica Consortium</title>
   <style>
-    :root {
-      --deep-purple: #4b2e83;
-      --mid-purple: #6d4db3;
-      --light-purple: #efe8fb;
-      --soft-purple: #f8f5fc;
-      --card-purple: #fbf9fe;
-      --text-dark: #2b2238;
-      --muted-text: #5e5470;
-      --white: #ffffff;
-      --border: #e4daf5;
-      --shadow: 0 8px 22px rgba(75, 46, 131, 0.08);
-    }
-
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background: var(--white);
-      color: var(--text-dark);
+      background: linear-gradient(180deg, #0b1f3a 0%, #102b50 100%);
+      color: white;
+      line-height: 1.6;
     }
 
-    nav {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 18px 20px;
-      text-align: center;
+    header {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 0.5px;
     }
 
     nav a {
-      color: var(--deep-purple);
+      color: white;
       text-decoration: none;
-      margin: 0 18px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      transition: color 0.2s ease;
+      margin-left: 24px;
+      font-weight: 500;
+      transition: 0.3s ease;
     }
 
     nav a:hover {
-      color: var(--mid-purple);
+      color: #7fc8ff;
     }
 
     .hero {
-      background: linear-gradient(135deg, var(--deep-purple), var(--mid-purple));
-      color: white;
+      padding: 70px 20px 40px;
       text-align: center;
-      padding: 56px 20px 48px 20px;
+      max-width: 1100px;
+      margin: auto;
     }
 
     .hero h1 {
-      margin: 0 0 12px 0;
-      font-size: 2.2rem;
-      letter-spacing: 0.2px;
+      font-size: 3rem;
+      margin-bottom: 20px;
     }
 
     .hero p {
-      margin: 0 auto;
-      max-width: 860px;
-      font-size: 1.02rem;
-      line-height: 1.65;
-    }
-
-    .main-wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 34px 20px 60px 20px;
-    }
-
-    .section-card,
-    .map-container,
-    #infoBox {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      box-shadow: var(--shadow);
-    }
-
-    .section-card {
-      padding: 30px;
-      margin-bottom: 26px;
-    }
-
-    .section-title {
-      margin: 0 0 10px 0;
-      color: var(--deep-purple);
-      font-size: 1.7rem;
-    }
-
-    .section-intro {
-      margin: 0 0 24px 0;
-      color: var(--muted-text);
-      line-height: 1.65;
-      max-width: 900px;
-    }
-
-    .member-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
-    }
-
-    .member-card {
-      background: var(--card-purple);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .member-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 20px rgba(75, 46, 131, 0.08);
-    }
-
-    .member-card h3 {
-      margin: 0 0 10px 0;
-      color: var(--deep-purple);
       font-size: 1.08rem;
-    }
-
-    .member-card p {
-      margin: 7px 0;
-      line-height: 1.5;
-      color: var(--text-dark);
-    }
-
-    .map-container {
-      padding: 24px;
-      margin-bottom: 24px;
-    }
-
-    .map-heading {
-      text-align: center;
-      margin-bottom: 14px;
-    }
-
-    .map-heading h2 {
-      margin: 0 0 8px 0;
-      color: var(--deep-purple);
-      font-size: 1.7rem;
-    }
-
-    .map-heading p {
+      color: #d9e7f5;
+      max-width: 950px;
       margin: 0 auto;
-      max-width: 760px;
-      color: var(--muted-text);
-      line-height: 1.6;
     }
 
-    #africaMap {
-      width: 100%;
-      height: 560px;
-      display: block;
-      border: none;
-      background: var(--white);
-      border-radius: 12px;
+    .about-section {
+      max-width: 1200px;
+      margin: 30px auto 70px;
+      padding: 0 20px;
     }
 
-    #infoBox {
-      padding: 28px;
-      display: none;
+    .map-members-container {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr;
+      gap: 28px;
+      align-items: start;
     }
 
-    #countryTitle {
-      margin: 0 0 14px 0;
-      color: var(--deep-purple);
+    .map-card,
+    .members-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+      padding: 24px;
+    }
+
+    .map-card h2,
+    .members-card h2 {
+      margin-bottom: 16px;
       font-size: 1.5rem;
     }
 
-    #countryContent p {
-      margin: 10px 0;
-      line-height: 1.6;
-      color: var(--text-dark);
+    .map-instructions {
+      color: #cfe0ef;
+      margin-bottom: 16px;
+      font-size: 0.96rem;
     }
 
-    .close-btn {
-      background: var(--deep-purple);
-      color: white;
-      border: none;
-      padding: 11px 18px;
-      border-radius: 10px;
+    .map-wrapper {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+      padding: 10px;
+    }
+
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .country {
+      fill: #6fa8dc;
+      stroke: #dbeeff;
+      stroke-width: 1.5;
       cursor: pointer;
-      margin-top: 16px;
-      font-weight: 700;
-      transition: background 0.2s ease;
+      transition: fill 0.25s ease, transform 0.2s ease;
+      transform-origin: center;
     }
 
-    .close-btn:hover {
-      background: var(--mid-purple);
+    .country:hover {
+      fill: #9fd3ff;
+    }
+
+    .country.active {
+      fill: #ffd166;
+      stroke: white;
+      stroke-width: 2;
+    }
+
+    .country-label {
+      fill: white;
+      font-size: 12px;
+      pointer-events: none;
+      font-weight: bold;
+    }
+
+    .selected-country {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      color: #ffd166;
+    }
+
+    .member-list {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    .member-list li {
+      background: rgba(255,255,255,0.06);
+      border-left: 4px solid #7fc8ff;
+      padding: 12px 14px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+
+    .member-list strong {
+      display: block;
+      font-size: 1rem;
+      color: #ffffff;
+    }
+
+    .member-list span {
+      color: #d3e2f1;
+      font-size: 0.94rem;
+    }
+
+    .default-message {
+      color: #d3e2f1;
+      font-size: 0.98rem;
+      margin-top: 10px;
     }
 
     footer {
-      margin-top: 40px;
-      padding: 26px 20px;
       text-align: center;
-      color: #6a5d82;
-      border-top: 1px solid var(--border);
-      background: var(--soft-purple);
+      padding: 26px 20px;
+      color: #c7d8ea;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      margin-top: 50px;
     }
 
-    @media (max-width: 700px) {
-      nav a {
-        display: inline-block;
-        margin: 8px 10px;
+    @media (max-width: 900px) {
+      .map-members-container {
+        grid-template-columns: 1fr;
       }
 
       .hero h1 {
-        font-size: 1.85rem;
+        font-size: 2.3rem;
       }
 
-      .hero p {
-        font-size: 0.98rem;
+      nav a {
+        margin-left: 14px;
+        font-size: 0.95rem;
       }
 
-      .section-card,
-      .map-container,
-      #infoBox {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
-      #africaMap {
-        height: 430px;
+      header {
+        padding: 16px 20px;
+        flex-direction: column;
+        gap: 10px;
       }
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="members.html">Members</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+  <header>
+    <div class="logo">Nephrica Consortium</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="members.html">Members</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
   <section class="hero">
-    <h1>Members</h1>
+    <h1>About Nephrica</h1>
     <p>
-      Our consortium includes an international network of clinicians, researchers, and project contributors.
-      Core team members in the United States support coordination, outreach, and research development, while African collaborators are represented below by country.
+      The Nephrica Consortium is a collaborative, multi-country initiative focused on improving
+      the understanding and management of glomerular diseases across Africa. By bringing together
+      clinicians and researchers from diverse regions and healthcare settings, the consortium aims
+      to understand current practices, identify gaps in care, and promote equitable access to
+      diagnosis and treatment.
+      <br><br>
+      Through coordinated data collection efforts and regional engagement, the consortium seeks to
+      better define patterns in the presentation, diagnosis, and management of glomerular diseases
+      across the continent. The initiative emphasizes collaboration, knowledge sharing, and the
+      development of context-specific research priorities that reflect the realities of kidney
+      disease care in African healthcare systems.
+      <br><br>
+      The consortium engages physicians practicing across Africa, including nephrologists,
+      transplant surgeons, and primary care physicians involved in the diagnosis, management,
+      or referral of patients with suspected or confirmed glomerular diseases.
     </p>
   </section>
 
-  <div class="main-wrap">
+  <section class="about-section">
+    <div class="map-members-container">
 
-    <div class="section-card">
-      <h2 class="section-title">Core Team</h2>
-      <p class="section-intro">
-        This section highlights project leadership, coordination, and U.S.-based contributors supporting NEPHRICA’s symposium, outreach, and research goals.
-      </p>
-
-      <div class="member-grid">
-        <div class="member-card">
-          <h3>Zach Kushner</h3>
-          <p><strong>Role:</strong> Research Contributor / Website Development</p>
-          <p><strong>Location:</strong> United States</p>
-          <p><strong>Institution:</strong> Add your institution here</p>
-        </div>
-
-        <div class="member-card">
-          <h3>U.S. Contributor Name</h3>
-          <p><strong>Role:</strong> Project Support</p>
-          <p><strong>Location:</strong> United States</p>
-          <p><strong>Institution:</strong> Add institution here</p>
-        </div>
-
-        <div class="member-card">
-          <h3>Faculty Mentor / Advisor</h3>
-          <p><strong>Role:</strong> Advisor</p>
-          <p><strong>Location:</strong> United States</p>
-          <p><strong>Institution:</strong> Add institution here</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="map-container">
-      <div class="map-heading">
-        <h2>African Collaborators</h2>
-        <p>
-          Select a country on the map to view participating physicians, collaborators, and institutions in that location.
+      <div class="map-card">
+        <h2>Consortium Members Across Africa</h2>
+        <p class="map-instructions">
+          Click a highlighted country on the map to see the members involved.
         </p>
+
+        <div class="map-wrapper">
+          <svg viewBox="0 0 800 900" xmlns="http://www.w3.org/2000/svg" aria-label="Interactive Africa Map">
+            <!-- Simplified Africa background -->
+            <path
+              d="M318 78
+                 L390 60 L452 84 L520 130 L572 178
+                 L602 250 L620 320 L610 382
+                 L580 430 L560 505 L520 585
+                 L470 650 L430 725 L395 815
+                 L350 785 L330 720 L280 680
+                 L245 615 L205 540 L175 470
+                 L160 395 L170 315 L205 245
+                 L250 180 L285 125 Z"
+              fill="rgba(255,255,255,0.08)"
+              stroke="rgba(255,255,255,0.18)"
+              stroke-width="3"
+            />
+
+            <!-- Morocco -->
+            <polygon
+              id="Morocco"
+              class="country"
+              points="250,120 300,105 330,120 320,155 270,160 240,145"
+            ></polygon>
+            <text x="250" y="100" class="country-label">Morocco</text>
+
+            <!-- Algeria -->
+            <polygon
+              id="Algeria"
+              class="country"
+              points="320,105 385,92 455,120 430,180 345,182 320,155"
+            ></polygon>
+            <text x="355" y="84" class="country-label">Algeria</text>
+
+            <!-- Nigeria -->
+            <polygon
+              id="Nigeria"
+              class="country"
+              points="315,345 360,338 385,370 372,418 325,425 300,390"
+            ></polygon>
+            <text x="305" y="332" class="country-label">Nigeria</text>
+
+            <!-- Kenya -->
+            <polygon
+              id="Kenya"
+              class="country"
+              points="470,405 515,398 530,438 508,492 460,480 452,438"
+            ></polygon>
+            <text x="470" y="390" class="country-label">Kenya</text>
+
+            <!-- South Africa -->
+            <polygon
+              id="South Africa"
+              class="country"
+              points="350,700 420,682 470,720 448,775 382,790 330,750"
+            ></polygon>
+            <text x="335" y="670" class="country-label">South Africa</text>
+
+            <!-- Ghana -->
+            <polygon
+              id="Ghana"
+              class="country"
+              points="275,355 302,350 305,405 280,412 265,386"
+            ></polygon>
+            <text x="240" y="345" class="country-label">Ghana</text>
+
+            <!-- Egypt -->
+            <polygon
+              id="Egypt"
+              class="country"
+              points="470,120 542,118 565,160 515,192 455,170"
+            ></polygon>
+            <text x="500" y="103" class="country-label">Egypt</text>
+
+            <!-- Ethiopia -->
+            <polygon
+              id="Ethiopia"
+              class="country"
+              points="500,300 565,292 590,340 560,388 500,380 478,340"
+            ></polygon>
+            <text x="500" y="283" class="country-label">Ethiopia</text>
+          </svg>
+        </div>
       </div>
 
-      <object type="image/svg+xml" data="africa.svg" id="africaMap"></object>
-    </div>
+      <div class="members-card">
+        <h2>Country Members</h2>
+        <div id="memberContent">
+          <div class="selected-country">Select a country</div>
+          <p class="default-message">
+            Click on a country in the map to display the people involved from that location.
+          </p>
+        </div>
+      </div>
 
-    <div id="infoBox">
-      <h2 id="countryTitle"></h2>
-      <div id="countryContent"></div>
-      <button class="close-btn" onclick="closeInfo()">Close</button>
     </div>
-
-  </div>
+  </section>
 
   <footer>
-    NEPHRICA | Nephrology Research and Innovation Consortium for Africa
+    &copy; 2026 Nephrica Consortium. All rights reserved.
   </footer>
 
   <script>
-    const countryData = {
-      KE: `
-        <p><strong>Kenya</strong></p>
-        <p><strong>Dr. Example Name</strong> – Nephrologist</p>
-        <p>Example Hospital / Institution</p>
-        <p><strong>Dr. Example Name</strong> – Transplant Specialist</p>
-        <p>Example Hospital / Institution</p>
-      `,
-      ET: `
-        <p><strong>Ethiopia</strong></p>
-        <p><strong>Dr. Example Name</strong> – Nephrologist</p>
-        <p>Example Hospital / Institution</p>
-      `,
-      CD: `
-        <p><strong>Democratic Republic of the Congo</strong></p>
-        <p><strong>Dr. Example Name</strong> – Nephrologist</p>
-        <p>Example Hospital / Institution</p>
-      `,
-      CG: `
-        <p><strong>Republic of the Congo</strong></p>
-        <p><strong>Dr. Example Name</strong> – Nephrologist</p>
-        <p>Example Hospital / Institution</p>
-      `
+    const membersData = {
+      "Morocco": [
+        { name: "Dr. Amina El Idrissi", role: "Nephrologist" },
+        { name: "Dr. Youssef Bennani", role: "Clinical Research Lead" }
+      ],
+      "Algeria": [
+        { name: "Dr. Samir Khelifa", role: "Internal Medicine / Nephrology" }
+      ],
+      "Nigeria": [
+        { name: "Dr. Chinedu Okafor", role: "Nephrologist" },
+        { name: "Dr. Adaeze Eze", role: "Glomerular Disease Researcher" },
+        { name: "Dr. Ibrahim Bello", role: "Consultant Physician" }
+      ],
+      "Kenya": [
+        { name: "Dr. Mercy Wanjiku", role: "Nephrologist" },
+        { name: "Dr. Daniel Otieno", role: "Transplant Specialist" }
+      ],
+      "South Africa": [
+        { name: "Dr. Thabo Ndlovu", role: "Nephrologist" },
+        { name: "Dr. Naledi Moletsane", role: "Academic Research Collaborator" }
+      ],
+      "Ghana": [
+        { name: "Dr. Kwame Mensah", role: "Nephrology Consultant" }
+      ],
+      "Egypt": [
+        { name: "Dr. Omar Hassan", role: "Renal Pathway Coordinator" },
+        { name: "Dr. Salma Fawzy", role: "Clinical Investigator" }
+      ],
+      "Ethiopia": [
+        { name: "Dr. Hana Tesfaye", role: "Nephrologist" }
+      ]
     };
 
-    const countryNames = {
-      KE: "Kenya",
-      ET: "Ethiopia",
-      CD: "Democratic Republic of the Congo",
-      CG: "Republic of the Congo"
-    };
+    const countries = document.querySelectorAll(".country");
+    const memberContent = document.getElementById("memberContent");
 
-    function showInfo(countryCode) {
-      const infoBox = document.getElementById("infoBox");
-      const title = document.getElementById("countryTitle");
-      const content = document.getElementById("countryContent");
+    countries.forEach(country => {
+      country.addEventListener("click", () => {
+        countries.forEach(c => c.classList.remove("active"));
+        country.classList.add("active");
 
-      title.textContent = countryNames[countryCode];
-      content.innerHTML = countryData[countryCode];
-      infoBox.style.display = "block";
-      infoBox.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
+        const countryName = country.id;
+        const members = membersData[countryName] || [];
 
-    function closeInfo() {
-      document.getElementById("infoBox").style.display = "none";
-    }
+        let html = `<div class="selected-country">${countryName}</div>`;
 
-    document.getElementById("africaMap").addEventListener("load", function () {
-      const svg = this.contentDocument;
-      const countries = ["KE", "ET", "CD", "CG"];
-
-      countries.forEach(id => {
-        const country = svg.getElementById(id);
-
-        if (country) {
-          country.style.cursor = "pointer";
-          country.style.transition = "fill 0.2s ease";
-
-          country.addEventListener("click", function () {
-            showInfo(id);
+        if (members.length > 0) {
+          html += `<ul class="member-list">`;
+          members.forEach(member => {
+            html += `
+              <li>
+                <strong>${member.name}</strong>
+                <span>${member.role}</span>
+              </li>
+            `;
           });
-
-          country.addEventListener("mouseover", function () {
-            country.style.fill = "#b79ced";
-          });
-
-          country.addEventListener("mouseout", function () {
-            country.style.fill = "#f2f2f2";
-          });
+          html += `</ul>`;
+        } else {
+          html += `
+            <p class="default-message">
+              No members have been added for this country yet.
+            </p>
+          `;
         }
+
+        memberContent.innerHTML = html;
       });
     });
   </script>
