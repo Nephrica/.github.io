@@ -93,7 +93,6 @@ nav a {
 .member-role {
   font-size: 0.9rem;
   color: #555;
-  line-height: 1.5;
 }
 
 .selected-country {
@@ -155,7 +154,7 @@ const membersData = {
       {
         name: "Yewondwossen Tadesse Mengistu, MD",
         role: "Senior nephrologist and professor with 25+ years experience.",
-        image: "./images/Yewondwossen Headshot.jpg"
+        image: "./images/mengistu.jpg"
       }
     ]
   },
@@ -166,7 +165,7 @@ const membersData = {
       {
         name: "Dr. Khalida B. Soki",
         role: "Nephrica Consortium member from Kenya.",
-        image: "./images/Soki Headshot.jpg"
+        image: "./images/default.jpg"
       }
     ]
   },
@@ -177,7 +176,7 @@ const membersData = {
       {
         name: "Dr. Nlandu Mayamba",
         role: "Nephrica Consortium member from Congo.",
-        image: "./images/Yannick Headshot.jpg"
+        image: "./images/default.jpg"
       }
     ]
   }
@@ -187,19 +186,13 @@ function renderMembers(code) {
   const container = document.getElementById("memberContent");
   const country = membersData[code];
 
-  if (!country) {
-    container.innerHTML = "<p>No data found.</p>";
-    return;
-  }
-
   let html = `<div class="selected-country">${country.name}</div>`;
   html += `<ul class="member-list">`;
 
   country.members.forEach(m => {
     html += `
       <li class="member-card">
-        <img src="${m.image}" class="member-photo"
-             onerror="this.src='./images/default.jpg'"/>
+        <img src="${m.image}" class="member-photo"/>
         <div>
           <span class="member-name">${m.name}</span>
           <span class="member-role">${m.role}</span>
@@ -215,24 +208,15 @@ function renderMembers(code) {
 document.getElementById("africaMap").addEventListener("load", function () {
   const svg = this.contentDocument;
 
-  const clickableCodes = ["ET","KE","CD"];
+  const allCodes = ["ET","KE","CD"];
   const baseColor = "#d9d1e8";
 
-  // Force uniform color
-  const elements = svg.querySelectorAll("path, polygon");
-
-  elements.forEach(el => {
-    el.removeAttribute("fill");
-    el.style.fill = baseColor;
-    el.style.stroke = "#fff";
-    el.style.strokeWidth = "1";
-    el.style.transition = "fill 0.2s ease";
-  });
-
-  clickableCodes.forEach(code => {
+  allCodes.forEach(code => {
     const el = svg.getElementById(code);
     if (!el) return;
 
+    el.style.fill = baseColor;
+    el.style.stroke = "#fff";
     el.style.cursor = "pointer";
 
     el.addEventListener("mouseenter", () => {
@@ -244,7 +228,7 @@ document.getElementById("africaMap").addEventListener("load", function () {
     });
 
     el.addEventListener("click", () => {
-      clickableCodes.forEach(c => {
+      allCodes.forEach(c => {
         const other = svg.getElementById(c);
         if (other) {
           other.dataset.active = "";
