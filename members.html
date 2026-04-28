@@ -1,234 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Members | Nephrica Consortium</title>
-
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f1f7;
-  color: #4b2e83;
-}
-
-header {
-  border-bottom: 1px solid #dfd3ee;
-  padding: 24px 0;
-}
-
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-}
-
-nav a {
-  text-decoration: none;
-  color: #4b2e83;
-  font-weight: bold;
-}
-
-.hero {
-  text-align: center;
-  padding: 40px 20px;
-}
-
-.main-section {
-  max-width: 1200px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  padding: 20px;
-}
-
-.card {
-  background: white;
-  padding: 25px;
-}
-
-.map-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
-#africaMap {
-  width: 100%;
-  height: 600px;
-}
-
-/* MEMBER STYLES */
-.member-list {
-  list-style: none;
-}
-
-.member-card {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 15px;
-  background: #f7f3fb;
-  padding: 12px;
-}
-
-.member-photo {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #6a42b8;
-}
-
-.member-name {
-  font-weight: bold;
-  display: block;
-}
-
-.member-role {
-  font-size: 0.9rem;
-  color: #555;
-}
-
-.selected-country {
-  font-size: 1.5rem;
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-@media (max-width: 900px) {
-  .main-section {
-    grid-template-columns: 1fr;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<header>
-<nav>
-  <a href="./index.html">Home</a>
-  <a href="./about.html">About</a>
-  <a href="./members.html">Members</a>
-  <a href="./projects.html">Projects</a>
-</nav>
-</header>
-
-<section class="hero">
-<h1>Nephrica Consortium Members Across Africa</h1>
-<p>Click Ethiopia, Kenya, or Congo on the map.</p>
-</section>
-
-<section class="main-section">
-
-<div class="card">
-<h2>Africa Map</h2>
-
-<div class="map-wrapper">
-<object id="africaMap" data="./africa.svg" type="image/svg+xml"></object>
-</div>
-</div>
-
-<div class="card">
-<h2>Members</h2>
-
-<div id="memberContent">
-<div class="selected-country">Select a country</div>
-</div>
-
-</div>
-
-</section>
-
-<script>
-const membersData = {
-  ET: {
-    name: "Ethiopia",
-    members: [
-      {
-        name: "Yewondwossen Tadesse Mengistu, MD",
-        role: "Senior nephrologist and professor with 25+ years experience.",
-        image: "./images/mengistu.jpg"
-      }
-    ]
-  },
-
-  KE: {
-    name: "Kenya",
-    members: [
-      {
-        name: "Dr. Khalida B. Soki",
-        role: "Nephrica Consortium member from Kenya.",
-        image: "./images/default.jpg"
-      }
-    ]
-  },
-
-  CD: {
-    name: "Congo",
-    members: [
-      {
-        name: "Dr. Nlandu Mayamba",
-        role: "Nephrica Consortium member from Congo.",
-        image: "./images/default.jpg"
-      }
-    ]
-  }
-};
-
-function renderMembers(code) {
-  const container = document.getElementById("memberContent");
-  const country = membersData[code];
-
-  let html = `<div class="selected-country">${country.name}</div>`;
-  html += `<ul class="member-list">`;
-
-  country.members.forEach(m => {
-    html += `
-      <li class="member-card">
-        <img src="${m.image}" class="member-photo"/>
-        <div>
-          <span class="member-name">${m.name}</span>
-          <span class="member-role">${m.role}</span>
-        </div>
-      </li>
-    `;
-  });
-
-  html += `</ul>`;
-  container.innerHTML = html;
-}
-
 document.getElementById("africaMap").addEventListener("load", function () {
   const svg = this.contentDocument;
 
-  const allCodes = ["ET","KE","CD"];
+  const clickableCodes = ["ET", "KE", "CD"];
   const baseColor = "#d9d1e8";
 
-  allCodes.forEach(code => {
+  // ✅ STEP 1: FORCE all paths to same base color
+  const paths = svg.querySelectorAll("path");
+
+  paths.forEach(p => {
+    p.style.fill = baseColor;
+    p.style.stroke = "#ffffff";
+    p.style.strokeWidth = "1";
+    p.style.transition = "fill 0.2s ease";
+
+    // 🔑 THIS removes hardcoded SVG colors
+    p.removeAttribute("fill");
+  });
+
+  // ✅ STEP 2: Add interactivity ONLY to clickable countries
+  clickableCodes.forEach(code => {
     const el = svg.getElementById(code);
     if (!el) return;
 
-    el.style.fill = baseColor;
-    el.style.stroke = "#fff";
     el.style.cursor = "pointer";
 
     el.addEventListener("mouseenter", () => {
-      if (!el.dataset.active) el.style.fill = "#6a42b8";
+      if (!el.dataset.active) {
+        el.style.fill = "#6a42b8";
+      }
     });
 
     el.addEventListener("mouseleave", () => {
-      if (!el.dataset.active) el.style.fill = baseColor;
+      if (!el.dataset.active) {
+        el.style.fill = baseColor;
+      }
     });
 
     el.addEventListener("click", () => {
-      allCodes.forEach(c => {
+      clickableCodes.forEach(c => {
         const other = svg.getElementById(c);
         if (other) {
           other.dataset.active = "";
@@ -243,7 +52,3 @@ document.getElementById("africaMap").addEventListener("load", function () {
     });
   });
 });
-</script>
-
-</body>
-</html>
