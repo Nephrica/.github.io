@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Nephrica Consortium</title>
+
+<style>
+:root {
+  --deep-purple: #4b2e83;
+  --mid-purple: #6d4db3;
+  --light-purple: #efe8fb;
+  --soft-purple: #f8f5fc;
+  --text-dark: #2b2238;
+  --border: #e7dcf5;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: white;
+  color: var(--text-dark);
+}
+
+/* NAV (same as your site) */
+nav {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  padding: 18px;
+  text-align: center;
+}
+
+nav a {
+  color: var(--deep-purple);
+  text-decoration: none;
+  margin: 0 18px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: var(--mid-purple);
+}
+
+/* CONTACT SECTION */
+.contact-section {
+  background: var(--soft-purple);
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.contact-title {
+  color: var(--deep-purple);
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.contact-subtext {
+  color: #6d5a98;
+  margin-bottom: 40px;
+  font-size: 1.05rem;
+}
+
+.contact-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.contact-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 25px;
+  width: 260px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(75, 46, 131, 0.12);
+}
+
+.contact-photo {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--mid-purple);
+  margin-bottom: 12px;
+}
+
+.contact-card h3 {
+  color: var(--deep-purple);
+  margin-bottom: 6px;
+}
+
+.contact-role {
+  font-size: 0.95rem;
+  color: #5a458d;
+  margin-bottom: 8px;
+}
+
+.contact-email {
+  font-size: 0.9rem;
+  color: #6d5a98;
+}
+
+/* FOOTER */
+footer {
+  margin-top: 30px;
+  padding: 20px;
+  text-align: center;
+  background: var(--soft-purple);
+  border-top: 1px solid var(--border);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="members.html">Members</a>
+  <a href="projects.html">Projects</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<section class="contact-section">
+
+  <h2 class="contact-title">Contact</h2>
+  <p class="contact-subtext">
+    For collaboration, research inquiries, or general questions, please reach out to our team.
+  </p>
+
+  <div class="contact-grid">
+
+    <!-- Dr. Paolo -->
+    <div class="contact-card">
+      <img src="./images/paolo.jpg" alt="Dr. Paolo Cravedi" class="contact-photo">
+      <h3>Dr. Paolo Cravedi</h3>
+      <p class="contact-role">Nephrology Leader & Research Collaborator</p>
+      <p class="contact-email">paolo@example.com</p>
+    </div>
+
+    <!-- Dr. Fasika -->
+    <div class="contact-card">
+      <img src="./images/fasika.jpg" alt="Dr. Fasika Tedla" class="contact-photo">
+      <h3>Dr. Fasika Tedla</h3>
+      <p class="contact-role">Nephrology Specialist & Academic Leader</p>
+      <p class="contact-email">fasika@example.com</p>
+    </div>
+
+    <!-- You -->
+    <div class="contact-card">
+      <img src="./images/yourphoto.jpg" alt="Your Name" class="contact-photo">
+      <h3>Your Name</h3>
+      <p class="contact-role">Consortium Coordinator</p>
+      <p class="contact-email">you@example.com</p>
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  NEPHRICA | Nephrology Research and Innovation Consortium for Africa
+</footer>
+
+</body>
+</html>
