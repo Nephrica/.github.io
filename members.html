@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>  
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -64,35 +64,35 @@ nav a {
   height: 600px;
 }
 
-/* MEMBER STYLES */
-.member-list {
-  list-style: none;
-}
-
-.member-card {
+/* FEATURED MEMBER (LARGE VIEW) */
+.member-featured {
   display: flex;
-  gap: 15px;
-  margin-bottom: 15px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   background: #f7f3fb;
-  padding: 12px;
+  padding: 25px;
 }
 
-.member-photo {
-  width: 70px;
-  height: 70px;
+.member-featured img {
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #6a42b8;
+  border: 3px solid #6a42b8;
+  margin-bottom: 15px;
 }
 
 .member-name {
   font-weight: bold;
-  display: block;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
 }
 
 .member-role {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #555;
+  line-height: 1.6;
 }
 
 .selected-country {
@@ -117,7 +117,7 @@ nav a {
   <a href="./about.html">About</a>
   <a href="./members.html">Members</a>
   <a href="./projects.html">Projects</a>
-    <a href="./contact.html">Contact</a>
+  <a href="./contact.html">Contact</a>
 </nav>
 </header>
 
@@ -188,21 +188,17 @@ function renderMembers(code) {
   const country = membersData[code];
 
   let html = `<div class="selected-country">${country.name}</div>`;
-  html += `<ul class="member-list">`;
 
   country.members.forEach(m => {
     html += `
-      <li class="member-card">
-        <img src="${m.image}" class="member-photo"/>
-        <div>
-          <span class="member-name">${m.name}</span>
-          <span class="member-role">${m.role}</span>
-        </div>
-      </li>
+      <div class="member-featured">
+        <img src="${m.image}">
+        <div class="member-name">${m.name}</div>
+        <div class="member-role">${m.role}</div>
+      </div>
     `;
   });
 
-  html += `</ul>`;
   container.innerHTML = html;
 }
 
