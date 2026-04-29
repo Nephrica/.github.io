@@ -98,6 +98,16 @@
       margin-bottom: 20px;
     }
 
+    /* ✅ IMAGE FIX */
+    .about-image {
+      width: 100%;
+      max-width: 800px;   /* prevents stretching */
+      height: auto;
+      display: block;
+      margin: 0 auto 20px auto;
+      border-radius: 12px;
+    }
+
     footer {
       margin-top: 30px;
       padding: 20px;
@@ -147,9 +157,12 @@
     <div class="content-card">
       <h2>Who We Are</h2>
 
-      <!-- ADDED IMAGE -->
-<img src="./images/scientist%20photo.JPG" style="width:100%; height:auto; border-radius:12px; margin-bottom:20px;">
-      The Nephrica Consortium is a collaborative, multi-country initiative focused on improving the understanding and management of glomerular diseases across Africa. By bringing together clinicians and researchers from diverse regions and healthcare settings, the consortium aims to understand current practices, identify gaps in care, and promote equitable access to diagnosis and treatment.
+      <!-- ✅ IMAGE -->
+      <img src="./images/scientist%20photo.JPG" class="about-image">
+
+      <!-- ✅ FIXED PARAGRAPH -->
+      <p>
+        The Nephrica Consortium is a collaborative, multi-country initiative focused on improving the understanding and management of glomerular diseases across Africa. By bringing together clinicians and researchers from diverse regions and healthcare settings, the consortium aims to understand current practices, identify gaps in care, and promote equitable access to diagnosis and treatment.
       </p>
 
       <p>
