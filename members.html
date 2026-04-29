@@ -95,6 +95,13 @@ nav a {
   line-height: 1.6;
 }
 
+/* ✅ ADDED EMAIL STYLE */
+.member-email {
+  font-size: 0.95rem;
+  color: #6a42b8;
+  margin-top: 10px;
+}
+
 .selected-country {
   font-size: 1.5rem;
   margin-bottom: 15px;
@@ -155,7 +162,8 @@ const membersData = {
       {
         name: "Yewondwossen Tadesse Mengistu, MD",
         role: "Yewondwossen Tadesse Mengistu, MD is a Consultant Nephrologist and Associate Professor of Internal Medicine at Addis Ababa University. With over 25 years of experience, his work spans clinical care, medical education, and physician training, and he has mentored many nephrologists across Ethiopia and Africa. He played a key role in establishing Ethiopia’s first maintenance hemodialysis unit in 2001, helping expand dialysis services nationwide. Dr. Mengistu has authored over 40 peer-reviewed publications, presented widely, and held leadership roles in major national and international nephrology organizations.",
-        image: "./images/Yewondwossen Headshot.jpg"
+        image: "./images/Yewondwossen Headshot.jpg",
+        email: "yewondt"
       }
     ]
   },
@@ -166,7 +174,8 @@ const membersData = {
       {
         name: "Dr. Khalida B. Soki",
         role: "Dr. Khalida B. Soki is a board-certified Consultant Internist and Transplant Nephrologist practicing at Kidney Care Consultants at The Nairobi Hospital. She completed her transplant fellowship in November 2025 and serves as Medical Director of Figocare Plus dialysis units across Kenya. She is Deputy Secretary-General of the African Association of Nephrology and an executive member of Women in Nephrology Africa, and previously served as Treasurer of the Kenya Renal Association. Dr. Soki has contributed to national kidney transplantation guidelines and is committed to advancing kidney care, education, and patient outcomes across Africa.",
-        image: "./images/Soki Headshot.jpg"
+        image: "./images/Soki Headshot.jpg",
+        email: "drkbsoki@gmail.com"
       }
     ]
   },
@@ -177,7 +186,8 @@ const membersData = {
       {
         name: "Dr. Nlandu Mayamba N. Yannick",
         role: "Specialist in internal medicine and nephrology, Dr. Nlandu Mayamba serves as Head of the Hemodialysis Unit at Kinshasa University Hospital and as a consultant physician. He is actively involved in dialysis care, nephrology training, and medical education, with expertise in hemodialysis, peritoneal dialysis, and critical care nephrology. His work is supported by international training and participation in global nephrology programs and conferences, contributing to the advancement of kidney care in the region.",
-        image: "./images/Yannick Headshot.jpg"
+        image: "./images/Yannick Headshot.jpg",
+        email: "yannicknlandu@yahoo.fr"
       }
     ]
   }
@@ -195,6 +205,7 @@ function renderMembers(code) {
         <img src="${m.image}">
         <div class="member-name">${m.name}</div>
         <div class="member-role">${m.role}</div>
+        <div class="member-email">${m.email}</div>
       </div>
     `;
   });
