@@ -43,7 +43,7 @@ nav a:hover {
 }
 
 .projects-grid {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -54,14 +54,22 @@ nav a:hover {
 .project-card {
   background: var(--soft-purple);
   border: 1px solid var(--border);
-  padding: 25px;
   border-radius: 12px;
+  padding: 15px;
   transition: 0.25s;
 }
 
 .project-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 18px rgba(75,46,131,0.15);
+}
+
+.project-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
 }
 
 .project-title {
@@ -84,6 +92,10 @@ nav a:hover {
   border-radius: 8px;
   font-weight: bold;
 }
+
+.project-btn:hover {
+  background: var(--mid-purple);
+}
 </style>
 </head>
 
@@ -104,14 +116,46 @@ nav a:hover {
 
 <div class="projects-grid">
 
-  <!-- PROJECT -->
+  <!-- PROJECT 1 -->
   <div class="project-card">
+    <img src="./images/kidney1.jpg" class="project-image">
+
     <div class="project-title">African Kidney Health Survey</div>
+
     <div class="project-desc">
-      A multi-country initiative assessing kidney disease awareness, access to care,
-      and treatment patterns across Africa.
+      A multi-country initiative assessing kidney disease awareness,
+      access to care, and treatment patterns across Africa.
     </div>
+
     <a class="project-btn" href="project-survey.html">View Project</a>
+  </div>
+
+  <!-- PROJECT 2 (PLACEHOLDER FOR FUTURE) -->
+  <div class="project-card">
+    <img src="./images/kidney2.jpg" class="project-image">
+
+    <div class="project-title">Dialysis Access Initiative</div>
+
+    <div class="project-desc">
+      Focused on improving access to dialysis services and infrastructure
+      in underserved regions across Africa.
+    </div>
+
+    <a class="project-btn" href="#">Coming Soon</a>
+  </div>
+
+  <!-- PROJECT 3 (PLACEHOLDER) -->
+  <div class="project-card">
+    <img src="./images/kidney3.jpg" class="project-image">
+
+    <div class="project-title">Transplant Education Program</div>
+
+    <div class="project-desc">
+      A training initiative aimed at strengthening transplant nephrology
+      education and capacity building across partner institutions.
+    </div>
+
+    <a class="project-btn" href="#">Coming Soon</a>
   </div>
 
 </div>
