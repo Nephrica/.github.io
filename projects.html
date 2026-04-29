@@ -1,183 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About | NEPHRICA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects | Nephrica Consortium</title>
 
-  <style>
-    :root {
-      --deep-purple: #4b2e83;
-      --mid-purple: #6d4db3;
-      --light-purple: #efe8fb;
-      --soft-purple: #f8f5fc;
-      --text-dark: #2b2238;
-      --border: #e7dcf5;
-    }
+<style>
+:root {
+  --deep-purple: #4b2e83;
+  --mid-purple: #6d4db3;
+  --soft-purple: #f8f5fc;
+  --border: #e7dcf5;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: white;
-      color: var(--text-dark);
-      opacity: 0;
-      transform: translateY(10px);
-      animation: pageFade 0.8s ease forwards;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: white;
+  color: #2b2238;
+}
 
-    @keyframes pageFade {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+nav {
+  border-bottom: 1px solid var(--border);
+  padding: 18px;
+  text-align: center;
+}
 
-    nav {
-      background: white;
-      border-bottom: 1px solid var(--border);
-      padding: 18px;
-      text-align: center;
-    }
+nav a {
+  color: var(--deep-purple);
+  text-decoration: none;
+  margin: 0 18px;
+  font-weight: bold;
+}
 
-    nav a {
-      color: var(--deep-purple);
-      text-decoration: none;
-      margin: 0 18px;
-      font-weight: bold;
-      transition: color 0.25s ease;
-    }
+nav a:hover {
+  color: var(--mid-purple);
+}
 
-    nav a:hover {
-      color: var(--mid-purple);
-    }
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+}
 
-    .hero {
-      text-align: center;
-      padding: 40px 20px 20px;
-      background: linear-gradient(180deg, #ffffff 0%, #faf7fe 100%);
-      border-bottom: 1px solid var(--border);
-    }
+.projects-grid {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 20px;
+}
 
-    .hero h1 {
-      margin: 0;
-      color: var(--deep-purple);
-      font-size: 3rem;
-    }
+.project-card {
+  background: var(--soft-purple);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 15px;
+  transition: 0.25s;
+}
 
-    .hero p {
-      margin: 12px auto 0;
-      max-width: 900px;
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(75,46,131,0.15);
+}
 
-    .content {
-      max-width: 1000px;
-      margin: 30px auto;
-      padding: 0 20px 40px;
-    }
+.project-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
 
-    .content-card {
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 8px 24px rgba(75, 46, 131, 0.06);
-    }
+.project-title {
+  font-size: 1.3rem;
+  color: var(--deep-purple);
+  margin-bottom: 10px;
+}
 
-    .content-card h2 {
-      color: var(--deep-purple);
-      margin-top: 0;
-      font-size: 2rem;
-      text-align: center;
-    }
+.project-desc {
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
 
-    .content-card p {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
+.project-btn {
+  display: inline-block;
+  padding: 10px 14px;
+  background: var(--deep-purple);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+}
 
-    /* ✅ IMAGE FIX */
-    .about-image {
-      width: 100%;
-      max-width: 800px;   /* prevents stretching */
-      height: auto;
-      display: block;
-      margin: 0 auto 20px auto;
-      border-radius: 12px;
-    }
-
-    footer {
-      margin-top: 30px;
-      padding: 20px;
-      text-align: center;
-      background: var(--soft-purple);
-      border-top: 1px solid var(--border);
-    }
-
-    @media (max-width: 768px) {
-      nav a {
-        display: inline-block;
-        margin: 8px 10px;
-      }
-
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-
-      .content-card {
-        padding: 24px;
-      }
-
-      .content-card h2 {
-        font-size: 1.6rem;
-      }
-    }
-  </style>
+.project-btn:hover {
+  background: var(--mid-purple);
+}
+</style>
 </head>
+
 <body>
 
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="members.html">Members</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="members.html">Members</a>
+  <a href="projects.html">Projects</a>
+  <a href="contact.html">Contact</a>
+</nav>
 
-  <section class="hero">
-    <h1>About NEPHRICA</h1>
-    <p>
-      Learn more about the mission, collaboration, and research focus of the Nephrica Consortium.
-    </p>
-  </section>
+<div class="hero">
+  <h1>Projects</h1>
+  <p>Explore current research initiatives across the Nephrica Consortium.</p>
+</div>
 
-  <div class="content">
-    <div class="content-card">
-      <h2>Who We Are</h2>
+<div class="projects-grid">
 
-      <!-- ✅ IMAGE -->
-      <img src="./images/scientist%20photo.JPG" class="about-image">
+  <!-- PROJECT 1 -->
+  <div class="project-card">
+    <img src="./images/kidney1.jpg" class="project-image">
 
-      <!-- ✅ FIXED PARAGRAPH -->
-      <p>
-        The Nephrica Consortium is a collaborative, multi-country initiative focused on improving the understanding and management of glomerular diseases across Africa. By bringing together clinicians and researchers from diverse regions and healthcare settings, the consortium aims to understand current practices, identify gaps in care, and promote equitable access to diagnosis and treatment.
-      </p>
+    <div class="project-title">African Kidney Health Survey</div>
 
-      <p>
-        Through coordinated data collection efforts and regional engagement, the Nephrica consortium seeks to better define patterns in the presentation, diagnosis, and management of glomerular diseases across the continent. The initiative emphasizes collaboration, knowledge sharing, and the development of context-specific research priorities that reflect the realities of kidney disease care in African healthcare systems.
-      </p>
-
-      <p>
-        The consortium engages physicians practicing across Africa, including nephrologists, transplant surgeons, and primary care physicians involved in the diagnosis, management, or referral of patients with suspected or confirmed glomerular diseases. By leveraging the expertise and experience of clinicians working within their local settings, Nephrica aims to generate meaningful insights that will inform future research, strengthen regional partnerships, and ultimately improve outcomes for patients with kidney disease.
-      </p>
+    <div class="project-desc">
+      A multi-country initiative assessing kidney disease awareness,
+      access to care, and treatment patterns across Africa.
     </div>
+
+    <a class="project-btn" href="project-survey.html">View Project</a>
   </div>
 
-  <footer>
-    NEPHRICA | Nephrology Research and Innovation Consortium for Africa
-  </footer>
+  <!-- PROJECT 2 (PLACEHOLDER FOR FUTURE) -->
+  <div class="project-card">
+    <img src="./images/kidney2.jpg" class="project-image">
+
+    <div class="project-title">Dialysis Access Initiative</div>
+
+    <div class="project-desc">
+      Focused on improving access to dialysis services and infrastructure
+      in underserved regions across Africa.
+    </div>
+
+    <a class="project-btn" href="#">Coming Soon</a>
+  </div>
+
+  <!-- PROJECT 3 (PLACEHOLDER) -->
+  <div class="project-card">
+    <img src="./images/kidney3.jpg" class="project-image">
+
+    <div class="project-title">Transplant Education Program</div>
+
+    <div class="project-desc">
+      A training initiative aimed at strengthening transplant nephrology
+      education and capacity building across partner institutions.
+    </div>
+
+    <a class="project-btn" href="#">Coming Soon</a>
+  </div>
+
+</div>
 
 </body>
 </html>
