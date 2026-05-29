@@ -31,10 +31,16 @@ nav a {
   text-decoration: none;
   margin: 0 18px;
   font-weight: bold;
+  padding-bottom: 4px;
 }
 
 nav a:hover {
   color: var(--mid-purple);
+}
+
+nav a.active {
+  color: var(--mid-purple);
+  border-bottom: 3px solid var(--mid-purple);
 }
 
 .hero {
@@ -130,7 +136,8 @@ nav a:hover {
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="members.html">Members</a>
-  <a href="projects.html">Projects</a>
+  <a href="projects.html" class="active">Projects</a>
+  <a href="Publications.html">Publications</a>
   <a href="contact.html">Contact</a>
 </nav>
 
