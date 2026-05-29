@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Publications | Nephrica Consortium</title>
+
+<style>
+:root {
+  --deep-purple: #4b2e83;
+  --mid-purple: #6d4db3;
+  --soft-purple: #f8f5fc;
+  --border: #e7dcf5;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: white;
+  color: #2b2238;
+}
+
+nav {
+  border-bottom: 1px solid var(--border);
+  padding: 18px;
+  text-align: center;
+}
+
+nav a {
+  color: var(--deep-purple);
+  text-decoration: none;
+  margin: 0 18px;
+  font-weight: bold;
+  padding-bottom: 4px;
+}
+
+nav a:hover {
+  color: var(--mid-purple);
+}
+
+nav a.active {
+  color: var(--mid-purple);
+  border-bottom: 3px solid var(--mid-purple);
+}
+
+.hero {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.publications-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}
+
+.publication-card {
+  background: var(--soft-purple);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+  transition: 0.25s;
+}
+
+.publication-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(75,46,131,0.15);
+}
+
+.publication-title {
+  font-size: 1.3rem;
+  color: var(--deep-purple);
+  margin-bottom: 12px;
+}
+
+.publication-desc {
+  line-height: 1.6;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="members.html">Members</a>
+  <a href="projects.html">Projects</a>
+  <a href="publications.html" class="active">Publications</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<div class="hero">
+  <h1>Publications</h1>
+  <p>Explore research publications from the Nephrica Consortium.</p>
+</div>
+
+<div class="publications-container">
+
+  <div class="publication-card">
+
+    <div class="publication-title">
+      Example Publication Title
+    </div>
+
+    <div class="publication-desc">
+      Add your publication citation, journal information, abstract summary, or publication details here.
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
