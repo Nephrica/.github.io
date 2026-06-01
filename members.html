@@ -1,4 +1,4 @@
-<!DOCTYPE html>  
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -74,42 +74,39 @@ nav a.active {
   height: 600px;
 }
 
-/* FEATURED MEMBER (LARGE VIEW) */
-.member-featured {
+.center-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   background: #f7f3fb;
-  padding: 25px;
+  padding: 30px;
+  border-radius: 12px;
 }
 
-.member-featured img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #6a42b8;
+.center-name {
+  font-size: 1.5rem;
+  font-weight: bold;
   margin-bottom: 15px;
 }
 
-.member-name {
-  font-weight: bold;
-  font-size: 1.3rem;
-  margin-bottom: 10px;
-}
-
-.member-role {
-  font-size: 1rem;
-  color: #555;
+.center-description {
+  margin-bottom: 20px;
   line-height: 1.6;
 }
 
-/* ✅ ADDED EMAIL STYLE */
-.member-email {
-  font-size: 0.95rem;
-  color: #6a42b8;
-  margin-top: 10px;
+.center-btn {
+  display: inline-block;
+  background: #4b2e83;
+  color: white;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.center-btn:hover {
+  background: #6d4db3;
 }
 
 .selected-country {
@@ -140,8 +137,8 @@ nav a.active {
 </header>
 
 <section class="hero">
-<h1>Nephrica Consortium Members Across Africa</h1>
-<p>Click Ethiopia, Kenya, or Congo on the map.</p>
+<h1>Nephrica Consortium Centers Across Africa</h1>
+<p>Click a country on the map to view participating centers.</p>
 </section>
 
 <section class="main-section">
@@ -155,10 +152,12 @@ nav a.active {
 </div>
 
 <div class="card">
-<h2>Members</h2>
+<h2>Centers</h2>
 
 <div id="memberContent">
-<div class="selected-country">Select a country</div>
+<div class="selected-country">
+Select a country
+</div>
 </div>
 
 </div>
@@ -166,72 +165,67 @@ nav a.active {
 </section>
 
 <script>
-const membersData = {
+const centersData = {
+
   ET: {
     name: "Ethiopia",
-    members: [
-      {
-        name: "Yewondwossen Tadesse Mengistu, MD",
-        role: "Yewondwossen Tadesse Mengistu, MD is a Consultant Nephrologist and Associate Professor of Internal Medicine at Addis Ababa University. With over 25 years of experience, his work spans clinical care, medical education, and physician training, and he has mentored many nephrologists across Ethiopia and Africa. He played a key role in establishing Ethiopia’s first maintenance hemodialysis unit in 2001, helping expand dialysis services nationwide. Dr. Mengistu has authored over 40 peer-reviewed publications, presented widely, and held leadership roles in major national and international nephrology organizations.",
-        image: "./images/Yewondwossen Headshot.jpg",
-        email: "yewondt@yahoo.com"
-      }
-    ]
+    center: "Addis Ababa University",
+    page: "ethiopia-center.html"
   },
 
   KE: {
     name: "Kenya",
-    members: [
-      {
-        name: "Dr. Khalida B. Soki",
-        role: "Dr. Khalida B. Soki is a board-certified Consultant Internist and Transplant Nephrologist practicing at Kidney Care Consultants at The Nairobi Hospital. She completed her transplant fellowship in November 2025 and serves as Medical Director of Figocare Plus dialysis units across Kenya. She is Deputy Secretary-General of the African Association of Nephrology and an executive member of Women in Nephrology Africa, and previously served as Treasurer of the Kenya Renal Association. Dr. Soki has contributed to national kidney transplantation guidelines and is committed to advancing kidney care, education, and patient outcomes across Africa.",
-        image: "./images/Soki Headshot.jpg",
-        email: "drkbsoki@gmail.com"
-      }
-    ]
+    center: "Nairobi Hospital",
+    page: "kenya-center.html"
   },
 
   CD: {
     name: "Congo",
-    members: [
-      {
-        name: "Dr. Nlandu Mayamba N. Yannick",
-        role: "Specialist in internal medicine and nephrology, Dr. Nlandu Mayamba serves as Head of the Hemodialysis Unit at Kinshasa University Hospital and as a consultant physician. He is actively involved in dialysis care, nephrology training, and medical education, with expertise in hemodialysis, peritoneal dialysis, and critical care nephrology. His work is supported by international training and participation in global nephrology programs and conferences, contributing to the advancement of kidney care in the region.",
-        image: "./images/Yannick Headshot.jpg",
-        email: "yannicknlandu@yahoo.fr"
-      }
-    ]
+    center: "Kinshasa University Hospital",
+    page: "congo-center.html"
   }
+
 };
 
-function renderMembers(code) {
+function renderCenter(code) {
+
   const container = document.getElementById("memberContent");
-  const country = membersData[code];
+  const country = centersData[code];
 
-  let html = `<div class="selected-country">${country.name}</div>`;
+  container.innerHTML = `
+    <div class="selected-country">
+      ${country.name}
+    </div>
 
-  country.members.forEach(m => {
-    html += `
-      <div class="member-featured">
-        <img src="${m.image}">
-        <div class="member-name">${m.name}</div>
-        <div class="member-role">${m.role}</div>
-        <div class="member-email">${m.email}</div>
+    <div class="center-card">
+
+      <div class="center-name">
+        ${country.center}
       </div>
-    `;
-  });
 
-  container.innerHTML = html;
+      <div class="center-description">
+        Click below to view contributors and information for this center.
+      </div>
+
+      <a class="center-btn" href="${country.page}">
+        View Center
+      </a>
+
+    </div>
+  `;
 }
 
 document.getElementById("africaMap").addEventListener("load", function () {
+
   const svg = this.contentDocument;
 
-  const allCodes = ["ET","KE","CD"];
+  const allCodes = ["ET", "KE", "CD"];
   const baseColor = "#d9d1e8";
 
   allCodes.forEach(code => {
+
     const el = svg.getElementById(code);
+
     if (!el) return;
 
     el.style.fill = baseColor;
@@ -239,28 +233,39 @@ document.getElementById("africaMap").addEventListener("load", function () {
     el.style.cursor = "pointer";
 
     el.addEventListener("mouseenter", () => {
-      if (!el.dataset.active) el.style.fill = "#6a42b8";
+      if (!el.dataset.active) {
+        el.style.fill = "#6a42b8";
+      }
     });
 
     el.addEventListener("mouseleave", () => {
-      if (!el.dataset.active) el.style.fill = baseColor;
+      if (!el.dataset.active) {
+        el.style.fill = baseColor;
+      }
     });
 
     el.addEventListener("click", () => {
+
       allCodes.forEach(c => {
+
         const other = svg.getElementById(c);
+
         if (other) {
           other.dataset.active = "";
           other.style.fill = baseColor;
         }
+
       });
 
       el.dataset.active = "true";
       el.style.fill = "#d24ca3";
 
-      renderMembers(code);
+      renderCenter(code);
+
     });
+
   });
+
 });
 </script>
 
